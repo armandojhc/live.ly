@@ -1,36 +1,31 @@
 {
-  "name": "mern",
-  "version": "1.0.0",
-  "description": "Mern Demo",
-  "main": "server.js",
-  "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "seed": "node scripts/seedDB.js",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
-  },
-  "dependencies": {
-    "express": "^4.17.1",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.9.11"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/armandojhc/project-3.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/armandojhc/project-3/issues"
-  },
-  "homepage": "https://github.com/armandojhc/project-3#readme"
+	"homepage": "http://myname.github.io/myapp",
+	"name": "mern",
+	"version": "1.0.0",
+	"description": "Mern Demo",
+	"main": "server.js",
+	"scripts": {
+		"start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+		"start:prod": "node server.js",
+		"start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+		"client": "cd client && npm run start",
+		"seed": "node scripts/seedDB.js",
+		"install": "cd client && npm install",
+		"build": "cd client && npm run build",
+		"heroku-postbuild": "npm run build"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"concurrently": "^5.2.0",
+		"nodemon": "^1.18.7"
+	},
+	"dependencies": {
+		"@material-ui/core": "^4.9.12",
+		"@material-ui/icons": "^4.9.1",
+		"@material-ui/lab": "^4.0.0-alpha.51",
+    "express": "^4.16.3",
+    "mongoose": "^5.9.11",
+		"if-env": "^1.0.4"
+	}
 }
