@@ -24,8 +24,10 @@
 		"@material-ui/core": "^4.9.12",
 		"@material-ui/icons": "^4.9.1",
 		"@material-ui/lab": "^4.0.0-alpha.51",
+		"bcryptjs": "^2.4.3",
 		"express": "^4.16.3",
+		"if-env": "^1.0.4",
 		"mongoose": "^5.9.11",
-		"if-env": "^1.0.4"
+		"passport": "^0.4.1"
 	}
 }
