@@ -1,7 +1,7 @@
 import React from 'react';
-import Feeds from './feedsEvent/index';
-import FutureEvent from './futureEvent/index';
-import Trending from './trendingEvent';
+import Feeds from '../feedsEvent/index';
+import FutureEvent from '../futureEvent/index';
+import Trending from '../trendingEvent';
 import Container from '@material-ui/core/Container';
 
 function mainContainer() {
