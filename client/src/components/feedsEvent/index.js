@@ -1,91 +1,88 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import Skeleton from '@material-ui/lab/Skeleton';
+import { red } from '@material-ui/core/colors';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ShareIcon from '@material-ui/icons/Share';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
+import vegetables from '../../img/vegetables.jpg';
 
-const data = [
-	{
-		src       :
-			'https://i.ytimg.com/vi/pLqipJNItIo/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBkklsyaw9FxDmMKapyBYCn9tbPNQ',
-		title     : 'Don Diablo @ Tomorrowland Main Stage 2019 | Official…',
-		channel   : 'Don Diablo',
-		views     : '396 k views',
-		createdAt : 'a week ago'
-	},
-	{
-		src       :
-			'https://i.ytimg.com/vi/_Uu12zY01ts/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCpX6Jan2rxrCAZxJYDXppTP4MoQA',
-		title     : 'Queen - Greatest Hits',
-		channel   : 'Queen Official',
-		views     : '40 M views',
-		createdAt : '3 years ago'
-	},
-	{
-		src       :
-			'https://i.ytimg.com/vi/kkLk2XWMBf8/hqdefault.jpg?sqp=-oaymwEYCNIBEHZIVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLB4GZTFu1Ju2EPPPXnhMZtFVvYBaw',
-		title     : 'Calvin Harris, Sam Smith - Promises (Official Video)',
-		channel   : 'Calvin Harris',
-		views     : '130 M views',
-		createdAt : '10 months ago'
-	}
-];
 
-function Media(props) {
-	const { loading = false } = props;
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+    },
+    media: {
+      height: 0,
+      paddingTop: '56.25%', // 16:9
+    },
+    expand: {
+      transform: 'rotate(0deg)',
+      marginLeft: 'auto',
+      transition: theme.transitions.create('transform', {
+        duration: theme.transitions.duration.shortest,
+      }),
+    },
+    expandOpen: {
+      transform: 'rotate(180deg)',
+    },
+    avatar: {
+      backgroundColor: red[500],
+    },
+  }),
+);
 
-	return (
-		<Grid container wrap="nowrap">
-			{(loading ? Array.from(new Array(3)) : data).map((item, index) => (
-				<Box key={index} width={210} marginRight={0.5} my={5}>
-					{item ? (
-						<img
-							style={{ width: 210, height: 118 }}
-							alt={item.title}
-							src={item.src}
-						/>
-					) : (
-						<Skeleton variant="rect" width={210} height={118} />
-					)}
+export default function RecipeReviewCard() {
+  const classes = useStyles();
+  const [expanded, setExpanded] = React.useState(false);
 
-					{item ? (
-						<Box pr={2}>
-							<Typography gutterBottom variant="body2">
-								{item.title}
-							</Typography>
-							<Typography
-								display="block"
-								variant="caption"
-								color="textSecondary"
-							>
-								{item.channel}
-							</Typography>
-							<Typography variant="caption" color="textSecondary">
-								{`${item.views} • ${item.createdAt}`}
-							</Typography>
-						</Box>
-					) : (
-						<Box pt={0.5}>
-							<Skeleton />
-							<Skeleton width="60%" />
-						</Box>
-					)}
-				</Box>
-			))}
-		</Grid>
-	);
-}
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
-Media.propTypes = {
-	loading : PropTypes.bool
-};
-
-export default function YouTube() {
-	return (
-		<Box overflow="hidden">
-			<Media loading />
-			<Media />
-		</Box>
-	);
+  return (
+    <Card className={classes.root}>
+      <CardHeader
+        avatar={
+          <Avatar aria-label="recipe" className={classes.avatar}>
+            R
+          </Avatar>
+        }
+        action={
+          <IconButton aria-label="settings">
+            <MoreVertIcon />
+          </IconButton>
+        }
+        title="The Weeknd"
+        subheader="May 8, 2020"
+      />
+      <CardMedia
+        className={classes.media}
+        image={vegetables}
+        title="The Weeknd"
+      />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+          He's gonna drop some panties.
+        </Typography>
+      </CardContent>
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        <IconButton aria-label="share">
+          <ShareIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
+  );
 }
