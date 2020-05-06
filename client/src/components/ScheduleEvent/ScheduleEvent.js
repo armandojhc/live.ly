@@ -55,6 +55,23 @@ export default function Form() {
             <TextField id="showgif" label="Show Gif URL" variant="outlined" />
             <TextField id="showimage" type="Show Image URL" label="Password" variant="outlined" />
             <TextField id="platform" label="Link to Performance" variant="outlined" />
+            <FormControl variant="outlined" className={classes.formControl}>
+        <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select-outlined"
+          value={age}
+          onChange={handleChange}
+          label="Category"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value={hip-hop}>Hip-Hop</MenuItem>
+          <MenuItem value={country}>Country</MenuItem>
+          <MenuItem value={folk}>Folk</MenuItem>
+        </Select>
+      </FormControl>
             <Button onClick={() => submitEvent()} variant="contained" color="primary">
                 Submit
             </Button>
