@@ -14,7 +14,12 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
+import Avatar from '@material-ui/core/Avatar';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import '../navbar/index.css';
+import logo from '../../logo/logo.png';
+import profilepic from '../../logo/profilepic.png';
+
 
 const useStyles = makeStyles((theme) => ({
 	grow: {
@@ -27,9 +32,25 @@ const useStyles = makeStyles((theme) => ({
 		display: 'none',
 		[theme.breakpoints.up('sm')]: {
 			display: 'block'
-		}
+		},
+		
+		textAlign:'left'
 	},
+	root: {
+		flexGrow: 1,
+	  },
+	  menuButton: {
+		marginRight: theme.spacing(2),
+	  },
+	  title: {
+		flexGrow: 1,
+	  },
+	  link: {
+		  padding:"0px 20px 0px 20px",
+		  fontSize:"10px"
+	  },
 	search: {
+		
 		position: 'relative',
 		borderRadius: theme.shape.borderRadius,
 		backgroundColor: fade(theme.palette.common.white, 0.15),
@@ -40,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
 		marginLeft: 0,
 		width: '100%',
 		[theme.breakpoints.up('sm')]: {
-			marginLeft: theme.spacing(3),
+			marginLeft: theme.spacing(55),
 			width: 'auto'
 		}
 	},
@@ -77,8 +98,23 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.up('md')]: {
 			display: 'none'
 		}
-	}
-}));
+	},
+	root1: {
+		display: 'flex',
+		'& > *': {
+		  margin: theme.spacing(1),
+		},
+	  },
+	  small: {
+		width: theme.spacing(3),
+		height: theme.spacing(3),
+	  },
+	  large: {
+		width: theme.spacing(7),
+		height: theme.spacing(7),
+	  },
+	}));
+
 
 export default function PrimarySearchAppBar() {
 	const classes = useStyles();
@@ -114,8 +150,7 @@ export default function PrimarySearchAppBar() {
 			keepMounted
 			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
 			open={isMenuOpen}
-			onClose={handleMenuClose}
-		>
+			onClose={handleMenuClose}>
 			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
 			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
 		</Menu>
@@ -166,17 +201,16 @@ export default function PrimarySearchAppBar() {
 		<div className={classes.grow}>
 			<AppBar position="static">
 				<Toolbar>
-					<IconButton
-						edge="start"
-						className={classes.menuButton}
-						color="inherit"
-						aria-label="open drawer"
-					>
-						<MenuIcon />
-					</IconButton>
-					<Typography className={classes.title} variant="h6" noWrap>
-						Live.ly
-					</Typography>
+	
+	<div className={classes.root1}>
+ 	<Avatar alt="Lively logo" src={logo}  /> 
+	<Typography variant="h6" className={classes.title}>
+            Lively
+			</Typography>
+    </div>
+
+
+				
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
@@ -190,18 +224,22 @@ export default function PrimarySearchAppBar() {
 							inputProps={{ 'aria-label': 'search' }}
 						/>
 					</div>
+
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
+
 						<IconButton aria-label="show 4 new mails" color="inherit">
 							<Badge badgeContent={4} color="secondary">
 								<MailIcon />
 							</Badge>
 						</IconButton>
+
 						<IconButton aria-label="show 17 new notifications" color="inherit">
 							<Badge badgeContent={17} color="secondary">
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
+
 						<IconButton
 							edge="end"
 							aria-label="account of current user"
@@ -210,8 +248,19 @@ export default function PrimarySearchAppBar() {
 							onClick={handleProfileMenuOpen}
 							color="inherit"
 						>
-							<AccountCircle />
+	<div className={classes.root}>
+      <Avatar alt="profile" src={profilepic} className={classes.small} />
+    </div>
+							
+							{/* <AccountCircle /> */}
 						</IconButton>
+
+						<IconButton aria-label="logout" color="inherit">
+							
+								<ExitToAppIcon />
+							
+						</IconButton>
+						
 					</div>
 					<div className={classes.sectionMobile}>
 						<IconButton
@@ -231,3 +280,8 @@ export default function PrimarySearchAppBar() {
 		</div>
 	);
 }
+
+
+
+
+  
