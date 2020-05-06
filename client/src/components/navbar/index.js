@@ -205,7 +205,7 @@ export default function PrimarySearchAppBar() {
 	<div className={classes.root1}>
  	<Avatar alt="Lively logo" src={logo}  /> 
 	<Typography variant="h6" className={classes.title}>
-            Lively
+            Live.ly
 			</Typography>
     </div>
 
