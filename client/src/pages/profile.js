@@ -7,13 +7,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles((theme) => ({
-	root  : {
+	root      : {
 		flexGrow : 1
 	},
-	paper : {
+	paper     : {
 		padding   : theme.spacing(2),
 		textAlign : 'center',
 		color     : theme.palette.text.secondary
+	},
+	container : {
+		padding : 15
 	}
 }));
 
@@ -22,7 +25,7 @@ function Profile() {
 	{
 		return (
 			<div>
-				<Container maxWidth="md">
+				<Container maxWidth="md" className={classes.container}>
 					<Grid container spacing={3}>
 						<Grid item xs={12}>
 							<Paper className={classes.paper}>
