@@ -1,116 +1,137 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Skeleton from '@material-ui/lab/Skeleton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import bike from '../../img/bike.jpg';
+import breakfast from '../../img/breakfast.jpg';
+import burgers from '../../img/burgers.jpg';
+import camera from '../../img/camera.jpg';
+import hats from '../../img/hats.jpg';
+import honey from '../../img/honey.jpg';
+import morning from '../../img/morning.jpg';
+import mushroom from '../../img//mushroom.jpg';
+import olive from '../../img/olive.jpg';
+import plant from '../../img/plant.jpg';
+import star from '../../img/star.jpg';
+import vegetables from '../../img/vegetables.jpg';
 
 const useStyles = makeStyles((theme) => ({
-	card  : {
-		maxWidth : 345,
-		margin   : theme.spacing(2)
+	root: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		justifyContent: 'space-around',
+		overflow: 'hidden',
+		backgroundColor: theme.palette.background.paper,
 	},
-	media : {
-		height : 190
-	}
+	gridList: {
+		flexWrap: 'nowrap',
+		// Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+		transform: 'translateZ(0)',
+	},
+	title: {
+		color: theme.palette.primary.white,
+	},
+	titleBar: {
+		background:
+			'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+	},
 }));
 
-function Media(props) {
-	const { loading = false } = props;
+const tileData = [
+	{
+		img: bike,
+		title: 'Travis Scott',
+		author: 'author',
+	},
+	{
+		img: breakfast,
+		title: 'Post Malone',
+		author: 'author',
+	},
+	{
+		img: burgers,
+		title: 'Kanye West',
+		author: 'author',
+	},
+	{
+		img: camera,
+		title: 'Iggy Azalea',
+		author: 'author',
+	},
+	{
+		img: hats,
+		title: 'Childish Gambino',
+		author: 'author',
+	},
+	{
+		img: honey,
+		title: 'Lil Peep',
+		author: 'author',
+	},
+	{
+		img: morning,
+		title: 'G Eazy',
+		author: 'author',
+	},
+	{
+		img: mushroom,
+		title: 'Wiz Khalifa',
+		author: 'author',
+	},
+	{
+		img: olive,
+		title: 'Lil Uzi Vert',
+		author: 'author',
+	},
+	{
+		img: plant,
+		title: 'Nicki Minaj',
+		author: 'author',
+	},
+	{
+		img: hats,
+		title: 'Juice WRLD',
+		author: 'author',
+	},
+	{
+		img: star,
+		title: 'Drake',
+		author: 'author',
+	},
+	{
+		img: vegetables,
+		title: 'The Weeknd',
+		author: 'author',
+	}
+];
+
+export default function SingleLineGridList() {
 	const classes = useStyles();
 
 	return (
-		<Card className={classes.card}>
-			<CardHeader
-				avatar={
-					loading ? (
-						<Skeleton
-							animation="wave"
-							variant="circle"
-							width={40}
-							height={40}
+		<div className={classes.root}>
+			<GridList className={classes.gridList} cols={2.5}>
+				{tileData.map((tile) => (
+					<GridListTile key={tile.img}>
+						<img src={tile.img} alt={tile.title} />
+						<GridListTileBar
+							title={tile.title}
+							classes={{
+								root: classes.titleBar,
+								title: classes.title,
+							}}
+							actionIcon={
+								<IconButton aria-label={`star ${tile.title}`}>
+									<StarBorderIcon className={classes.title} />
+								</IconButton>
+							}
 						/>
-					) : (
-						<Avatar
-							alt="Ted talk"
-							src="https://pbs.twimg.com/profile_images/877631054525472768/Xp5FAPD5_reasonably_small.jpg"
-						/>
-					)
-				}
-				action={
-					loading ? null : (
-						<IconButton aria-label="settings">
-							<MoreVertIcon />
-						</IconButton>
-					)
-				}
-				title={
-					loading ? (
-						<Skeleton
-							animation="wave"
-							height={10}
-							width="80%"
-							style={{ marginBottom: 6 }}
-						/>
-					) : (
-						'Ted'
-					)
-				}
-				subheader={
-					loading ? (
-						<Skeleton animation="wave" height={10} width="40%" />
-					) : (
-						'5 hours ago'
-					)
-				}
-			/>
-			{loading ? (
-				<Skeleton animation="wave" variant="rect" className={classes.media} />
-			) : (
-				<CardMedia
-					className={classes.media}
-					image="https://pi.tedcdn.com/r/talkstar-photos.s3.amazonaws.com/uploads/72bda89f-9bbf-4685-910a-2f151c4f3a8a/NicolaSturgeon_2019T-embed.jpg?w=512"
-					title="Ted talk"
-				/>
-			)}
-
-			<CardContent>
-				{loading ? (
-					<React.Fragment>
-						<Skeleton
-							animation="wave"
-							height={10}
-							style={{ marginBottom: 6 }}
-						/>
-						<Skeleton animation="wave" height={10} width="80%" />
-					</React.Fragment>
-				) : (
-					<Typography variant="body2" color="textSecondary" component="p">
-						{
-							"Why First Minister of Scotland Nicola Sturgeon thinks GDP is the wrong measure of a country's success:"
-						}
-					</Typography>
-				)}
-			</CardContent>
-		</Card>
-	);
-}
-
-Media.propTypes = {
-	loading : PropTypes.bool
-};
-
-export default function Facebook() {
-	return (
-		<div>
-			<Media loading />
-			<Media />
+					</GridListTile>
+				))}
+			</GridList>
 		</div>
 	);
 }
