@@ -52,14 +52,32 @@ mongoose.connect(
 //     }
 // });
 
-let postMaloneEvent = new EventModel();
+// let postMaloneEvent = new EventModel();
 
-postMaloneEvent.eventPhotoURL = "https://www.instagram.com/postmalone/?hl=en";
-postMaloneEvent.gifURL = "https://media.giphy.com/media/3ohuPcW67ShInnbBYI/giphy.gif";
-postMaloneEvent.name = "Post Molone QA Live in IG";
-postMaloneEvent.eventDate = 2020-08-03;
-postMaloneEvent.eventLink = "https://www.instagram.com/postmalone/?hl=en";
-postMaloneEvent.eventOwner = "Post Malone";
+// postMaloneEvent.eventPhotoURL = "https://www.instagram.com/postmalone/?hl=en";
+// postMaloneEvent.gifURL = "https://media.giphy.com/media/3ohuPcW67ShInnbBYI/giphy.gif";
+// postMaloneEvent.name = "Post Molone QA Live in IG";
+// postMaloneEvent.eventDate = 2020-08-03;
+// postMaloneEvent.eventLink = "https://www.instagram.com/postmalone/?hl=en";
+// postMaloneEvent.eventOwner = "Post Malone";
+
+// postMaloneEvent.save((err) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("All good!");
+//         mongoose.connection.close();
+//     }
+// });
+
+let drakeEvent = new EventModel();
+
+drakeEvent.eventPhotoURL = "";
+drakeEvent.gifURL = "https://media.giphy.com/media/3ohuPcW67ShInnbBYI/giphy.gif";
+drakeEvent.name = "Post Molone QA Live in IG";
+drakeEvent.eventDate = 2020-08-03;
+drakeEvent.eventLink = "https://www.instagram.com/postmalone/?hl=en";
+drakeEvent.eventOwner = "Post Malone";
 
 postMaloneEvent.save((err) => {
     if (err) {
@@ -69,4 +87,5 @@ postMaloneEvent.save((err) => {
         mongoose.connection.close();
     }
 });
+
 
