@@ -19,6 +19,7 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import '../navbar/index.css';
 import logo from '../../logo/logo.png';
 import profilepic from '../../logo/profilepic.png';
+import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -203,9 +204,11 @@ export default function PrimarySearchAppBar() {
 				<Toolbar>
 	
 	<div className={classes.root1}>
+		<Link to ="/">
  	<Avatar alt="Lively logo" src={logo}  /> 
+	 </Link>
 	<Typography variant="h6" className={classes.title}>
-            Lively
+            Live.ly
 			</Typography>
     </div>
 
@@ -245,20 +248,21 @@ export default function PrimarySearchAppBar() {
 							aria-label="account of current user"
 							aria-controls={menuId}
 							aria-haspopup="true"
-							onClick={handleProfileMenuOpen}
+							// onClick={handleProfileMenuOpen}
 							color="inherit"
 						>
+							<Link to = "/Profile">
 	<div className={classes.root}>
       <Avatar alt="profile" src={profilepic} className={classes.small} />
     </div>
-							
-							{/* <AccountCircle /> */}
+	</Link>					
+				
 						</IconButton>
 
-						<IconButton aria-label="logout" color="inherit">
-							
+						<IconButton aria-label="logout" color="white">
+						<Link to = "/SignUp">	
 								<ExitToAppIcon />
-							
+						</Link>	
 						</IconButton>
 						
 					</div>
@@ -283,5 +287,3 @@ export default function PrimarySearchAppBar() {
 
 
 
-
-  
