@@ -70,16 +70,34 @@ mongoose.connect(
 //     }
 // });
 
-let drakeEvent = new EventModel();
+// let drakeEvent = new EventModel();
 
-drakeEvent.eventPhotoURL = "";
-drakeEvent.gifURL = "https://media.giphy.com/media/3ohuPcW67ShInnbBYI/giphy.gif";
-drakeEvent.name = "Post Molone QA Live in IG";
-drakeEvent.eventDate = 2020-08-03;
-drakeEvent.eventLink = "https://www.instagram.com/postmalone/?hl=en";
-drakeEvent.eventOwner = "Post Malone";
+// drakeEvent.eventPhotoURL = "https://nightout.s3.amazonaws.com/media/posters/56951/large-15195a2b05a7c713.jpg?1555449205";
+// drakeEvent.gifURL = "https://media.giphy.com/media/l41Yh4vr9mSNE13FK/giphy.gif";
+// drakeEvent.name = "Drake WILDIN OUT Youtube";
+// drakeEvent.eventDate = 2020-08-03;
+// drakeEvent.eventLink = "https://www.youtube.com/user/DrakeOfficial";
+// drakeEvent.eventOwner = "Post Malone";
 
-postMaloneEvent.save((err) => {
+// drakeEvent.save((err) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("All good!");
+//         mongoose.connection.close();
+//     }
+// });
+
+let jbalvinEvent = new EventModel();
+
+jbalvinEvent.eventPhotoURL = "https://nightout.s3.amazonaws.com/media/posters/56951/large-15195a2b05a7c713.jpg?1555449205";
+jbalvinEvent.gifURL = "https://media.giphy.com/media/l41Yh4vr9mSNE13FK/giphy.gif";
+jbalvinEvent.name = "Drake WILDIN OUT Youtube";
+jbalvinEvent.eventDate = 2020-08-03;
+jbalvinEvent.eventLink = "https://www.youtube.com/user/DrakeOfficial";
+jbalvinEvent.eventOwner = "Post Malone";
+
+jbalvinEvent.save((err) => {
     if (err) {
         console.log(err);
     } else {
@@ -87,5 +105,4 @@ postMaloneEvent.save((err) => {
         mongoose.connection.close();
     }
 });
-
 
