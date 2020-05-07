@@ -8,15 +8,12 @@ import SignIn from './pages/signIn';
 import SignUp from './pages/signUp';
 import Footer from './components/footer/index.js';
 
-
-
 class App extends Component {
-
 	render() {
 		return (
 			<Router>
 				<div className="App">
-					<Navbar  />          
+					<Navbar />
 
 					<Switch>
 						<Route exact path={[ '/' ]}>
