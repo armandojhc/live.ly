@@ -1,4 +1,4 @@
-import React, { useState } from "./node_modules/reacte_modules/react";
+import React, { useState, ChangeEvent } from "./node_modules/reacte_modules/react";
 import API from "../utils/API";
 import { makeStyles } from './node_modules/@material-ui/core/styles-ui/core/styles';
 import Radio from './node_modules/@material-ui/core/Radiol-ui/core/Radio';
@@ -18,9 +18,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Form() {
+export default function Regform() {
     const classes = useStyles();
     const [user, saveUser] = useState([]);
+    const [value, setValue] = React.useState('fan');
+
+
+    const handleChange = (event) => {
+        setValue(event.target.value);
+      };
 
     function submitUser() {
         API.saveUser.then(res => {
@@ -29,10 +35,11 @@ export default function Form() {
         }).catch(err => console.log(err));
     }
 
+
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <FormControl>
-                <FormLabel component="legend">Gender</FormLabel>
+                <FormLabel component="legend">Registration Type</FormLabel>
                 <RadioGroup aria-label="type" name="type" value={value} onChange={handleChange}>
                     <FormControlLabel value="fan" control={<Radio />} label="Fan" />
                     <FormControlLabel value="artist" control={<Radio />} label="Artist" />
