@@ -272,21 +272,5 @@ mongoose.connect(
 //     }
 // });
 
-let alessoEvent = new EventModel();
 
-alessoEvent.eventPhotoURL = "https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2";
-alessoEvent.gifURL = "https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif";
-alessoEvent.name = "Tropical House King, Kygo YouTube Live";
-alessoEvent.eventDate = 2020-08-03;
-alessoEvent.eventLink = "https://www.youtube.com/user/KygoMusic";
-alessoEvent.eventOwner = "Kygo";
-
-kygoEvent.save((err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("All good!");
-        mongoose.connection.close();
-    }
-});
 
