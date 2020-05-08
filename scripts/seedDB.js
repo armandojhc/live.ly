@@ -254,23 +254,23 @@ mongoose.connect(
 //     }
 // });
 
-// let kygoEvent = new EventModel();
+let kygoEvent = new EventModel();
 
-// kygoEvent.eventPhotoURL = "https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2";
-// kygoEvent.gifURL = "https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif";
-// kygoEvent.name = "Tropical House King, Kygo YouTube Live";
-// kygoEvent.eventDate = 2020-08-03;
-// kygoEvent.eventLink = "https://www.youtube.com/user/KygoMusic";
-// kygoEvent.eventOwner = "Kygo";
+kygoEvent.eventPhotoURL = "https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2";
+kygoEvent.gifURL = "https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif";
+kygoEvent.name = "Tropical House King, Kygo YouTube Live";
+kygoEvent.eventDate = 2020-08-03;
+kygoEvent.eventLink = "https://www.youtube.com/user/KygoMusic";
+kygoEvent.eventOwner = "Kygo";
 
-// kygoEvent.save((err) => {
-//     if (err) {
-//         console.log(err);
-//     } else {
-//         console.log("All good!");
-//         mongoose.connection.close();
-//     }
-// });
+kygoEvent.save((err) => {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("All good!");
+        mongoose.connection.close();
+    }
+});
 
 
 
