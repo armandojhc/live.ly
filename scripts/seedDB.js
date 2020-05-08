@@ -200,16 +200,34 @@ mongoose.connect(
 // });
 
 
-let theWeekndEvent = new EventModel();
+// let theWeekndEvent = new EventModel();
 
-theWeekndEvent.eventPhotoURL = "https://www.residentadvisor.net/images/events/flyer/2016/12/us-1231-898758-front.jpg";
-theWeekndEvent.gifURL = "https://media.giphy.com/media/UOQN52PwpYae4/giphy.gif";
-theWeekndEvent.name = "It's The Weeknd on FB Live";
-theWeekndEvent.eventDate = 2020-08-03;
-theWeekndEvent.eventLink = "https://www.facebook.com/theweeknd/";
-theWeekndEvent.eventOwner = "The Weeknd";
+// theWeekndEvent.eventPhotoURL = "https://www.residentadvisor.net/images/events/flyer/2016/12/us-1231-898758-front.jpg";
+// theWeekndEvent.gifURL = "https://media.giphy.com/media/UOQN52PwpYae4/giphy.gif";
+// theWeekndEvent.name = "It's The Weeknd on FB Live";
+// theWeekndEvent.eventDate = 2020-08-03;
+// theWeekndEvent.eventLink = "https://www.facebook.com/theweeknd/";
+// theWeekndEvent.eventOwner = "The Weeknd";
 
-theWeekndEvent.save((err) => {
+// theWeekndEvent.save((err) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("All good!");
+//         mongoose.connection.close();
+//     }
+// });
+
+let shakiraEvent = new EventModel();
+
+shakiraEvent.eventPhotoURL = "";
+shakiraEvent.gifURL = "https://media.giphy.com/media/UOQN52PwpYae4/giphy.gif";
+shakiraEvent.name = "Shakira Hips Dont Lie IG Live";
+shakiraEvent.eventDate = 2020-08-03;
+shakiraEvent.eventLink = "";
+shakiraEvent.eventOwner = "The Weeknd";
+
+shakiraEvent.save((err) => {
     if (err) {
         console.log(err);
     } else {
@@ -217,5 +235,4 @@ theWeekndEvent.save((err) => {
         mongoose.connection.close();
     }
 });
-
 
