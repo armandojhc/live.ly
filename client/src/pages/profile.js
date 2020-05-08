@@ -12,7 +12,7 @@ import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import ListSubheader from '@material-ui/core/ListSubheader';
-
+import ProfileInfo from '../components/profileInfo/profileInfo'
 import InfoIcon from '@material-ui/icons/Info';
 import img1 from '../img/bike.jpg';
 import img2 from '../img/breakfast.jpg';
@@ -208,49 +208,7 @@ function Profile() {
 
 <Container maxWidth="md">
 
-		<Container maxWidth="sm" className={classes.container}>
-
-			<Container maxWidth="sm" className={classes.profile}>
-
-				<Container maxWidth="sm" className={classes.profileimage}>
-
-					<Avatar alt="Profile-image" src={profilepic} className={classes.large} />
-
-				</Container>
-
-				<Container maxWidth="sm" className={classes.profileusersettings}>
-
-					<h1 className={classes.profileusername}>manuelr14 </h1>
-
-					<Button className={classes.btnedit} variant="contained">Edit Profile </Button>
-
-					<IconButton className={classes.btnprofilesetting}>
-						<SettingsIcon />
-					</IconButton>
-
-				</Container>
-
-				<Container maxWidth="sm" className={classes.profileusersettings}>
-
-
-
-					<h1 className={classes.statcountn}>160</h1> <h1 className={classes.statcount}> post </h1>
-					<h1 className={classes.statcountn}>190</h1> <h1 className={classes.statcount}> followers </h1>
-					<h1 className={classes.statcountn}>130</h1> <h1 className={classes.statcount}> following </h1>
-
-				</Container>
-				<Container>
-				<p className={classes.bio}> I love to see live free concerts from my house, Bendecido y afortunado 📷✈️🏕️</p>
-			
-
-				</Container>
-				
-
-			</Container>
-
-
-
-		</Container >
+		<ProfileInfo/>
 
     <div className={classes.root2}>
       <GridList cellHeight={180} className={classes.gridList}>
