@@ -14,6 +14,8 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import plant from '../../img/plant.jpg';
+import star from '../../img/star.jpg';
 import vegetables from '../../img/vegetables.jpg';
 
 
@@ -45,44 +47,73 @@ export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const artistData = [
+    {
+      name: 'Ed Sheeran',
+      date: '5.12.2020',
+      url: 'https://google.com',
+      description: 'He is gonna drop some panties.',
+      eventURL: plant,
+      avatarURL: 'https://www.placecage.com/200/200'
+    },
+    {
+      name: 'Rihanna',
+      date: '5.19.2020',
+      url: 'https://google.com',
+      description: 'She will sing stuff.',
+      eventURL: vegetables,
+      avatarURL: 'https://www.placecage.com/200/200'
+    },
+    {
+      name: 'The Black Keys',
+      date: '5.14.2020',
+      url: 'https://google.com',
+      description: 'Rock show.',
+      eventURL: star,
+      avatarURL: 'https://www.placecage.com/200/200'
+
+    }
+  ]
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+    <div>{
+      artistData.map((event) => (
+        <Card className={classes.root}>
+          <CardHeader
+            avatar={
+              <Avatar aria-label="avatar" className={classes.avatar} src={event.avatarURL}>
+                R
           </Avatar>
-        }
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
-        title="The Weeknd"
-        subheader="May 8, 2020"
-      />
-      <CardMedia
-        className={classes.media}
-        image={vegetables}
-        title="The Weeknd"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          He's gonna drop some panties.
+            }
+            action={
+              <IconButton aria-label="settings">
+                <MoreVertIcon />
+              </IconButton>
+            }
+            title={event.name}
+            subheader={event.date}
+          />
+          <CardMedia
+            className={classes.media}
+            image={event.eventURL}
+            title={event.name}
+          />
+          <CardContent>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {event.description}
         </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-      </CardActions>
-    </Card>
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton aria-label="share">
+              <ShareIcon />
+            </IconButton>
+          </CardActions>
+        </Card>
+      ))
+    }
+    </div>
   );
 }
