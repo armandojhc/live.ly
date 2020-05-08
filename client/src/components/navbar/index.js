@@ -17,7 +17,7 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Avatar from '@material-ui/core/Avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import logo from '../../logo/logo.png';
+import logo from '../../logo/apple-touch-icon.png';
 import profilepic from '../../logo/profilepic.png';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
