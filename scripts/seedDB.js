@@ -218,16 +218,70 @@ mongoose.connect(
 //     }
 // });
 
-let shakiraEvent = new EventModel();
+// let shakiraEvent = new EventModel();
 
-shakiraEvent.eventPhotoURL = "";
-shakiraEvent.gifURL = "https://media.giphy.com/media/UOQN52PwpYae4/giphy.gif";
-shakiraEvent.name = "Shakira Hips Dont Lie IG Live";
-shakiraEvent.eventDate = 2020-08-03;
-shakiraEvent.eventLink = "";
-shakiraEvent.eventOwner = "The Weeknd";
+// shakiraEvent.eventPhotoURL = "https://s3.amazonaws.com/venuefiles/rad/performer-images/shakira.jpg";
+// shakiraEvent.gifURL = "https://media.giphy.com/media/ifdPlsV4hk7AGGonhM/giphy.gif";
+// shakiraEvent.name = "Shakira Hips Dont Lie IG Live";
+// shakiraEvent.eventDate = 2020-08-03;
+// shakiraEvent.eventLink = "https://www.instagram.com/shakira/?hl=en";
+// shakiraEvent.eventOwner = "Shakira";
 
-shakiraEvent.save((err) => {
+// shakiraEvent.save((err) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("All good!");
+//         mongoose.connection.close();
+//     }
+// });
+
+// let malumaEvent = new EventModel();
+
+// malumaEvent.eventPhotoURL = "https://www.toyotacenter.com/assets/img/Maluma_1200X630-75190513f5.jpg";
+// malumaEvent.gifURL = "https://media.giphy.com/media/fQD7FQiE9pmBVtD2aI/giphy.gif";
+// malumaEvent.name = "Maluma in Your House! Live IG Show!";
+// malumaEvent.eventDate = 2020-08-03;
+// malumaEvent.eventLink = "https://www.instagram.com/maluma/?hl=en";
+// malumaEvent.eventOwner = "Maluma";
+
+// malumaEvent.save((err) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("All good!");
+//         mongoose.connection.close();
+//     }
+// });
+
+// let kygoEvent = new EventModel();
+
+// kygoEvent.eventPhotoURL = "https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2";
+// kygoEvent.gifURL = "https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif";
+// kygoEvent.name = "Tropical House King, Kygo YouTube Live";
+// kygoEvent.eventDate = 2020-08-03;
+// kygoEvent.eventLink = "https://www.youtube.com/user/KygoMusic";
+// kygoEvent.eventOwner = "Kygo";
+
+// kygoEvent.save((err) => {
+//     if (err) {
+//         console.log(err);
+//     } else {
+//         console.log("All good!");
+//         mongoose.connection.close();
+//     }
+// });
+
+let alessoEvent = new EventModel();
+
+alessoEvent.eventPhotoURL = "https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2";
+alessoEvent.gifURL = "https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif";
+alessoEvent.name = "Tropical House King, Kygo YouTube Live";
+alessoEvent.eventDate = 2020-08-03;
+alessoEvent.eventLink = "https://www.youtube.com/user/KygoMusic";
+alessoEvent.eventOwner = "Kygo";
+
+kygoEvent.save((err) => {
     if (err) {
         console.log(err);
     } else {
