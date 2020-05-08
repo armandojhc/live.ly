@@ -1,16 +1,40 @@
 import React from 'react';
-import FutureEvents from '../components/futureEvent/index';
-import Footer from '../components/footer/index';
+import FeedEvents from '../components/feedsEvent/index';
 import SignInForm from '../components/signIn/index';
+import Container from '@material-ui/core/Container';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+	root      : {
+		flexGrow : 1
+	},
+	paper     : {
+		padding    : theme.spacing(2),
+		textAlign  : 'center',
+		color      : 'white',
+		background : 'transparent'
+	},
+	container : {
+		padding : 15
+	},
+	large     : {
+		width  : theme.spacing(20),
+		height : theme.spacing(20)
+	}
+}));
 
 function SignIn() {
-	return (
-		<div>
-			<SignInForm />
-			<FutureEvents />
-			<Footer />
-		</div>
-	);
+	const classes = useStyles();
+	{
+		return (
+			<div>
+				<Container maxWidth="md" className={classes.container}>
+					<SignInForm />
+					<FeedEvents />
+				</Container>
+			</div>
+		);
+	}
 }
 
 export default SignIn;
