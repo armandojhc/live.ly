@@ -1,4 +1,5 @@
 import React from 'react';
+import './index.css';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,111 +17,108 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import Avatar from '@material-ui/core/Avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import '../navbar/index.css';
 import logo from '../../logo/logo.png';
 import profilepic from '../../logo/profilepic.png';
-import { Link } from "react-router-dom";
-
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
-	grow: {
-		flexGrow: 1
+	grow           : {
+		flexGrow : 1
 	},
-	menuButton: {
-		marginRight: theme.spacing(2)
+	menuButton     : {
+		marginRight : theme.spacing(2)
 	},
-	title: {
-		display: 'none',
+	title          : {
+		display                      : 'none',
 		[theme.breakpoints.up('sm')]: {
-			display: 'block'
+			display : 'block'
 		},
-		
-		textAlign:'left'
-	},
-	root: {
-		flexGrow: 1,
-	  },
-	  menuButton: {
-		marginRight: theme.spacing(2),
-	  },
-	  title: {
-		flexGrow: 1,
-	  },
-	  link: {
-		  padding:"0px 20px 0px 20px",
-		  fontSize:"10px"
-	  },
-	search: {
-		
-		position: 'relative',
-		borderRadius: theme.shape.borderRadius,
-		backgroundColor: fade(theme.palette.common.white, 0.15),
-		'&:hover': {
-			backgroundColor: fade(theme.palette.common.white, 0.25)
-		},
-		marginRight: theme.spacing(2),
-		marginLeft: 0,
-		width: '100%',
-		[theme.breakpoints.up('sm')]: {
-			marginLeft: theme.spacing(55),
-			width: 'auto'
-		}
-	},
-	searchIcon: {
-		padding: theme.spacing(0, 2),
-		height: '100%',
-		position: 'absolute',
-		pointerEvents: 'none',
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'center'
-	},
-	inputRoot: {
-		color: 'inherit'
-	},
-	inputInput: {
-		padding: theme.spacing(1, 1, 1, 0),
-		// vertical padding + font size from searchIcon
-		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('md')]: {
-			width: '20ch'
-		}
-	},
-	sectionDesktop: {
-		display: 'none',
-		[theme.breakpoints.up('md')]: {
-			display: 'flex'
-		}
-	},
-	sectionMobile: {
-		display: 'flex',
-		[theme.breakpoints.up('md')]: {
-			display: 'none'
-		}
-	},
-	root1: {
-		display: 'flex',
-		'& > *': {
-		  margin: theme.spacing(1),
-		},
-	  },
-	  small: {
-		width: theme.spacing(3),
-		height: theme.spacing(3),
-	  },
-	  large: {
-		width: theme.spacing(7),
-		height: theme.spacing(7),
-	  },
-	}));
 
+		textAlign                    : 'left'
+	},
+	root           : {
+		flexGrow : 1
+	},
+	menuButton     : {
+		marginRight : theme.spacing(2)
+	},
+	title          : {
+		flexGrow : 1
+	},
+	link           : {
+		padding  : '0px 20px 0px 20px',
+		fontSize : '10px'
+	},
+	search         : {
+		position                     : 'relative',
+		borderRadius                 : theme.shape.borderRadius,
+		backgroundColor              : fade(theme.palette.common.white, 0.15),
+		'&:hover'                    : {
+			backgroundColor : fade(theme.palette.common.white, 0.25)
+		},
+		marginRight                  : theme.spacing(2),
+		marginLeft                   : 0,
+		width                        : '100%',
+		[theme.breakpoints.up('sm')]: {
+			marginLeft : theme.spacing(55),
+			width      : 'auto'
+		}
+	},
+	searchIcon     : {
+		padding        : theme.spacing(0, 2),
+		height         : '100%',
+		position       : 'absolute',
+		pointerEvents  : 'none',
+		display        : 'flex',
+		alignItems     : 'center',
+		justifyContent : 'center'
+	},
+	inputRoot      : {
+		color : 'inherit'
+	},
+	inputInput     : {
+		padding                      : theme.spacing(1, 1, 1, 0),
+		// vertical padding + font size from searchIcon
+		paddingLeft                  : `calc(1em + ${theme.spacing(4)}px)`,
+		transition                   : theme.transitions.create('width'),
+		width                        : '100%',
+		[theme.breakpoints.up('md')]: {
+			width : '20ch'
+		}
+	},
+	sectionDesktop : {
+		display                      : 'none',
+		[theme.breakpoints.up('md')]: {
+			display : 'flex'
+		}
+	},
+	sectionMobile  : {
+		display                      : 'flex',
+		[theme.breakpoints.up('md')]: {
+			display : 'none'
+		}
+	},
+	root1          : {
+		display : 'flex',
+		'& > *' : {
+			margin : theme.spacing(1)
+		}
+	},
+	small          : {
+		width  : theme.spacing(3),
+		height : theme.spacing(3)
+	},
+	large          : {
+		width  : theme.spacing(7),
+		height : theme.spacing(7)
+	}
+}));
 
 export default function PrimarySearchAppBar() {
 	const classes = useStyles();
-	const [anchorEl, setAnchorEl] = React.useState(null);
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+	const [ anchorEl, setAnchorEl ] = React.useState(null);
+	const [ mobileMoreAnchorEl, setMobileMoreAnchorEl ] = React.useState(null);
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -151,7 +149,8 @@ export default function PrimarySearchAppBar() {
 			keepMounted
 			transformOrigin={{ vertical: 'top', horizontal: 'right' }}
 			open={isMenuOpen}
-			onClose={handleMenuClose}>
+			onClose={handleMenuClose}
+		>
 			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
 			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
 		</Menu>
@@ -184,6 +183,7 @@ export default function PrimarySearchAppBar() {
 				</IconButton>
 				<p>Notifications</p>
 			</MenuItem>
+
 			<MenuItem onClick={handleProfileMenuOpen}>
 				<IconButton
 					aria-label="account of current user"
@@ -202,18 +202,15 @@ export default function PrimarySearchAppBar() {
 		<div className={classes.grow}>
 			<AppBar position="static">
 				<Toolbar>
-	
-	<div className={classes.root1}>
-		<Link to ="/">
- 	<Avatar alt="Lively logo" src={logo}  /> 
-	 </Link>
-	<Typography variant="h6" className={classes.title}>
-            Live.ly
-			</Typography>
-    </div>
+					<div className={classes.root1}>
+						<Link to="/">
+							<Avatar alt="Lively logo" src={logo} />
+						</Link>
+						<Typography variant="h6" className={classes.title}>
+							Live.ly
+						</Typography>
+					</div>
 
-
-				
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
@@ -221,8 +218,8 @@ export default function PrimarySearchAppBar() {
 						<InputBase
 							placeholder="Search…"
 							classes={{
-								root: classes.inputRoot,
-								input: classes.inputInput
+								root  : classes.inputRoot,
+								input : classes.inputInput
 							}}
 							inputProps={{ 'aria-label': 'search' }}
 						/>
@@ -230,7 +227,6 @@ export default function PrimarySearchAppBar() {
 
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
-
 						<IconButton aria-label="show 4 new mails" color="inherit">
 							<Badge badgeContent={4} color="secondary">
 								<MailIcon />
@@ -242,6 +238,16 @@ export default function PrimarySearchAppBar() {
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
+						<MenuItem>
+							<Link to="/Signin">
+								<Button variant="text">Sign in</Button>
+							</Link>
+						</MenuItem>
+						<MenuItem>
+							<Link to="/Signup">
+								<Button variant="text">Sign up</Button>
+							</Link>
+						</MenuItem>
 
 						<IconButton
 							edge="end"
@@ -251,20 +257,22 @@ export default function PrimarySearchAppBar() {
 							// onClick={handleProfileMenuOpen}
 							color="inherit"
 						>
-							<Link to = "/Profile">
-	<div className={classes.root}>
-      <Avatar alt="profile" src={profilepic} className={classes.small} />
-    </div>
-	</Link>					
-				
+							<Link to="/Profile">
+								<div className={classes.root}>
+									<Avatar
+										alt="profile"
+										src={profilepic}
+										className={classes.small}
+									/>
+								</div>
+							</Link>
 						</IconButton>
 
-						<IconButton aria-label="logout" color="white">
-						<Link to = "/SignUp">	
+						{/* <IconButton aria-label="logout" color="white">
+							<Link to="/SignUp">
 								<ExitToAppIcon />
-						</Link>	
-						</IconButton>
-						
+							</Link>
+						</IconButton> */}
 					</div>
 					<div className={classes.sectionMobile}>
 						<IconButton
@@ -284,6 +292,3 @@ export default function PrimarySearchAppBar() {
 		</div>
 	);
 }
-
-
-
