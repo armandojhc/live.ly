@@ -9,6 +9,30 @@
     <link rel="apple-touch-icon" href="../public/assets/icons/apple-touch-icon.png" />
 
     <title>Live.ly</title>
+ 
+ <!-- Change color part start here-->
+ <style>
+@keyframes cambia-color{
+    0% {
+        background-position: 0%, 50%;
+    }
+    50% {
+        background-position: 100%, 50%;
+    }
+    100% {
+        background-position: 0%, 100%;
+    }
+}
+
+body {
+  background-size: 400% 400%;
+  /* change left for top or  right, also can change radial for linear  */
+  background: -webkit-repeating-radial-gradient(left, #7a26dd, #e80808);
+  animation: cambia-color 5s linear infinite;
+}
+    </style>
+<!-- change color part finish here -->
+
   </head>
   <body>
     <noscript>
