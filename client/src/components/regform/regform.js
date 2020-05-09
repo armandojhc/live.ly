@@ -28,12 +28,12 @@ export default function Regform() {
         setValue(event.target.value);
       };
 
-    function submitUser() {
-        API.saveUser.then(res => {
-            saveUser(res.data)
-            console.log(res.data);
-        }).catch(err => console.log(err));
-    }
+    // function submitUser() {
+    //     API.saveUser.then(res => {
+    //         saveUser(res.data)
+    //         console.log(res.data);
+    //     }).catch(err => console.log(err));
+    // }
 
 
     return (
