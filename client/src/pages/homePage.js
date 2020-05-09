@@ -6,23 +6,25 @@ import Feeds from '../components/feedsEvent/index';
 import TrendingEvents from '../components/trendingEvent/index';
 import FutureEvents from '../components/futureEvent/index';
 import Container from '@material-ui/core/Container';
+import Footer from '../components/footer';
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		flexGrow: 1,
+	root      : {
+		flexGrow : 1
 	},
-	paper: {
-		padding: theme.spacing(2),
-		textAlign: 'center',
-		color: theme.palette.text.secondary,
+	paper     : {
+		padding   : theme.spacing(2),
+		textAlign : 'center',
+		color     : theme.palette.text.secondary
 	},
-	container: {
-		padding: 15
+	container : {
+		padding : 15
 	}
 }));
 
 export default function CenteredGrid() {
-	const classes = useStyles(); {
+	const classes = useStyles();
+	{
 		return (
 			<div>
 				<Container maxWidth="md" className={classes.container}>
@@ -40,6 +42,9 @@ export default function CenteredGrid() {
 						<Grid item xs={3}>
 							<Paper className={classes.paper}>
 								<FutureEvents />
+							</Paper>
+							<Paper>
+								<Footer />
 							</Paper>
 						</Grid>
 					</Grid>

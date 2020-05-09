@@ -1,5 +1,5 @@
 import React from 'react';
-import FeedEvents from '../components/feedsEvent/index';
+import Trending from '../components/trendingEvent';
 import SignInForm from '../components/signIn/index';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,8 +29,8 @@ function SignIn() {
 		return (
 			<div>
 				<Container maxWidth="md" className={classes.container}>
+					<Trending />
 					<SignInForm />
-					<FeedEvents />
 				</Container>
 			</div>
 		);

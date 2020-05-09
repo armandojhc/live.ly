@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 		padding    : theme.spacing(2),
 		textAlign  : 'center',
 		color      : 'white',
-		background : 'white'
+		background : 'transparent'
 	}
 }));
 
