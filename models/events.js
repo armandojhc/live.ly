@@ -7,7 +7,10 @@ var eventSchema = new Schema({
   name: { type: String, required: true },
   eventDate: { type: Date },
   eventLink: { type: String },
-  //   eventOwner: {type: mongoose.Types.ObjectId}
+  eventOwner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
 
 const Event = mongoose.model("Events", eventSchema);
