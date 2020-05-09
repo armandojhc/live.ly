@@ -16,10 +16,10 @@ class App extends Component {
 					<Navbar />
 
 					<Switch>
-						<Route exact path={[ '/' ]}>
+						<Route exact path={[ '/homepage' ]}>
 							<HomePage />
 						</Route>
-						<Route exact path={[ '/signin' ]}>
+						<Route exact path={[ '/' ]}>
 							<SignIn />
 						</Route>
 						<Route exact path={[ '/signup' ]}>
@@ -30,7 +30,6 @@ class App extends Component {
 						</Route>
 					</Switch>
 				</div>
-				<Footer />
 			</Router>
 		);
 	}

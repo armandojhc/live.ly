@@ -6,11 +6,13 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Container } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
 	root   : {
-		minWidth : 275
+		minWidth   : 275,
+		background : 'transparent'
 	},
 	bullet : {
 		display   : 'inline-block',
@@ -22,6 +24,10 @@ const useStyles = makeStyles({
 	},
 	pos    : {
 		marginBottom : 12
+	},
+	link   : {
+		textDecoration : 'none',
+		fontSize       : 8
 	}
 });
 
@@ -31,8 +37,8 @@ export default function SimpleCard() {
 
 	return (
 		<div>
-			<Container>
-				<Card className={classes.root}>
+			<Grid item xs={2}>
+				<Card className={classes.root} item xs={3}>
 					<CardContent>
 						<Typography
 							className={classes.title}
@@ -42,24 +48,24 @@ export default function SimpleCard() {
 							Meet the Team
 						</Typography>
 						<CardActions>
-							<Button size="small">
+							<Button size="small" className={classes.link}>
 								<a href="https://github.com/armandojhc" target="blank">
-									Armando Herrera Canelon
+									Armando H.
 								</a>
 							</Button>
-							<Button size="small">
+							<Button size="small" className={classes.link}>
 								<a href="https://github.com/manuelr14" target="blank">
-									Manuel Ramirez
+									Manuel R.
 								</a>
 							</Button>
-							<Button size="small">
+							<Button size="small" className={classes.link}>
 								<a href="https://github.com/everetthumphreys" target="blank">
-									Everett Humphreys
+									Everett H.
 								</a>
 							</Button>
-							<Button size="small">
+							<Button size="small" className={classes.link}>
 								<a href="https://github.com/rogercerpa" target="blank">
-									Roger Cerpa
+									Roger C.
 								</a>
 							</Button>
 						</CardActions>
@@ -71,8 +77,9 @@ export default function SimpleCard() {
 							</a>
 						</Button>
 					</CardActions>
+					<span> 2020 Live.ly</span>
 				</Card>
-			</Container>
+			</Grid>
 		</div>
 	);
 }

@@ -1,11 +1,12 @@
-const mongoose = require("mongoose");
-const UserModel = require("../models/users.js");
-const EventModel = require("../models/events.js");
+const mongoose = require('mongoose');
+const UserModel = require('../models/users.js');
+const EventModel = require('../models/events.js');
 
-mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/lively",
-    { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
-);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/lively', {
+	useUnifiedTopology: true,
+	useNewUrlParser: true,
+	useCreateIndex: true
+});
 
 //Remove all users
 
@@ -18,10 +19,10 @@ mongoose.connect(
 
 //Add user entry for Armando
 
-// let post = new UserModel();
+// let armando = new UserModel();
 
-// post.name = "Armando Herrera Canelon";
-// post.avatarURL = "https://avatars2.githubusercontent.com/u/56770124?s=400&u=690deb125107433852b9d01995fa0a800b767a45&v=4";
+// armando.name = "Armando Herrera Canelon";
+// armando.avatarURL = "https://avatars2.githubusercontent.com/u/56770124?s=400&u=690deb125107433852b9d01995fa0a800b767a45&v=4";
 // armando.email = "armando.herrera91@gmail.com";
 // armando.role = 2;
 // armando.password = "1234";
@@ -68,7 +69,6 @@ mongoose.connect(
 //         mongoose.connection.close();
 //     }
 // });
-
 
 // let jbalvin = new UserModel();
 
@@ -240,7 +240,6 @@ mongoose.connect(
 //     }
 // });
 
-
 // let postMaloneEvent = new EventModel();
 
 // postMaloneEvent.eventPhotoURL = "https://cdn1.thr.com/sites/default/files/2019/11/post_malone_amas.jpg";
@@ -277,7 +276,6 @@ mongoose.connect(
 //     }
 // });
 
-
 // let jbalvinEvent = new EventModel();
 
 // jbalvinEvent.eventPhotoURL = "http://www.sapcenter.com/assets/img/JBALVIN_750x462New-788d6bf49e.jpg";
@@ -295,7 +293,6 @@ mongoose.connect(
 //         mongoose.connection.close();
 //     }
 // });
-
 
 // let kanyeWestEvent = new EventModel();
 
@@ -369,7 +366,6 @@ mongoose.connect(
 //     }
 // });
 
-
 // let wizEvent = new EventModel();
 
 // wizEvent.eventPhotoURL = "https://pbs.twimg.com/media/EB8eNtUUcAEId_R.jpg";
@@ -387,7 +383,6 @@ mongoose.connect(
 //         mongoose.connection.close();
 //     }
 // });
-
 
 // let theWeekndEvent = new EventModel();
 
@@ -445,21 +440,19 @@ mongoose.connect(
 
 let kygoEvent = new EventModel();
 
-kygoEvent.eventPhotoURL = "https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2";
-kygoEvent.gifURL = "https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif";
-kygoEvent.name = "Tropical House King, Kygo YouTube Live";
+kygoEvent.eventPhotoURL =
+	'https://venueeventartist.com/imateq/event/446/1103/365219/600SC0/428114.jpeg?x=2';
+kygoEvent.gifURL = 'https://media.giphy.com/media/3ohc0USuOMGY99HdMk/giphy.gif';
+kygoEvent.name = 'Tropical House King, Kygo YouTube Live';
 kygoEvent.eventDate = '2020-08-03';
-kygoEvent.eventLink = "https://www.youtube.com/user/KygoMusic";
-kygoEvent.eventOwner = "5eb6434a418ea996ca41d614";
+kygoEvent.eventLink = 'https://www.youtube.com/user/KygoMusic';
+kygoEvent.eventOwner = '5eb6434a418ea996ca41d614';
 
 kygoEvent.save((err) => {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log("All good!");
-        mongoose.connection.close();
-    }
+	if (err) {
+		console.log(err);
+	} else {
+		console.log('All good!');
+		mongoose.connection.close();
+	}
 });
- 
-
-
