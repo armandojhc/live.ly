@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -17,6 +17,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import plant from '../../img/plant.jpg';
 import star from '../../img/star.jpg';
 import vegetables from '../../img/vegetables.jpg';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -46,34 +48,51 @@ const useStyles = makeStyles((theme: Theme) =>
 export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [artistData, setArtistData] = React.useState([]);
+  const [refreshEvents, setRefreshEvents] = React.useState(true);
 
-  const artistData = [
-    {
-      name: 'Ed Sheeran',
-      date: '5.12.2020',
-      url: 'https://google.com',
-      description: 'He is gonna drop some panties.',
-      eventURL: plant,
-      avatarURL: 'https://www.placecage.com/200/200'
-    },
-    {
-      name: 'Rihanna',
-      date: '5.19.2020',
-      url: 'https://google.com',
-      description: 'She will sing stuff.',
-      eventURL: vegetables,
-      avatarURL: 'https://www.placecage.com/200/200'
-    },
-    {
-      name: 'The Black Keys',
-      date: '5.14.2020',
-      url: 'https://google.com',
-      description: 'Rock show.',
-      eventURL: star,
-      avatarURL: 'https://www.placecage.com/200/200'
+  useEffect(() => {
 
-    }
-  ]
+    //Get the data from the server
+    console.log("Getting data...");
+    fetch("/api/events")
+    .then(res => res.json())
+    .then(json => {
+      console.log(json);
+      setRefreshEvents(false);
+      setArtistData(json);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }, [refreshEvents])
+  // const artistData = [
+  //   {
+  //     name: 'Ed Sheeran',
+  //     date: '5.12.2020',
+  //     url: 'https://google.com',
+  //     description: 'He is gonna drop some panties.',
+  //     eventURL: plant,
+  //     avatarURL: 'https://www.placecage.com/200/200'
+  //   },
+  //   {
+  //     name: 'Rihanna',
+  //     date: '5.19.2020',
+  //     url: 'https://google.com',
+  //     description: 'She will sing stuff.',
+  //     eventURL: vegetables,
+  //     avatarURL: 'https://www.placecage.com/200/200'
+  //   },
+  //   {
+  //     name: 'The Black Keys',
+  //     date: '5.14.2020',
+  //     url: 'https://google.com',
+  //     description: 'Rock show.',
+  //     eventURL: star,
+  //     avatarURL: 'https://www.placecage.com/200/200'
+
+  //   }
+  // ]
 
   return (
     <div>{
@@ -81,7 +100,7 @@ export default function RecipeReviewCard() {
         <Card className={classes.root}>
           <CardHeader
             avatar={
-              <Avatar aria-label="avatar" className={classes.avatar} src={event.avatarURL}>
+              <Avatar aria-label="avatar" className={classes.avatar} src={event.eventOwner.avatarURL}>
                 R
           </Avatar>
             }
@@ -91,12 +110,13 @@ export default function RecipeReviewCard() {
               </IconButton>
             }
             title={event.name}
-            subheader={event.date}
+            subheader={<Moment format="MM-DD-YYYY">{event.eventDate}</Moment>}
           />
           <CardMedia
             className={classes.media}
-            image={event.eventURL}
-            title={event.name}
+            image={event.eventPhotoURL}
+            title={event.eventOwner.name}
+            event={event.eventLink}
           />
           <CardContent>
             <Typography variant="body2" color="textSecondary" component="p">

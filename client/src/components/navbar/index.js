@@ -238,17 +238,6 @@ export default function PrimarySearchAppBar() {
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
-						<MenuItem>
-							<Link to="/Signin">
-								<Button variant="text">Sign in</Button>
-							</Link>
-						</MenuItem>
-						<MenuItem>
-							<Link to="/Signup">
-								<Button variant="text">Sign up</Button>
-							</Link>
-						</MenuItem>
-
 						<IconButton
 							edge="end"
 							aria-label="account of current user"
