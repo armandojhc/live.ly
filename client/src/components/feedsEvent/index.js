@@ -17,6 +17,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import plant from '../../img/plant.jpg';
 import star from '../../img/star.jpg';
 import vegetables from '../../img/vegetables.jpg';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -108,7 +110,7 @@ export default function RecipeReviewCard() {
               </IconButton>
             }
             title={event.name}
-            subheader={event.eventDate}
+            subheader={<Moment format="MM-DD-YYYY">{event.eventDate}</Moment>}
           />
           <CardMedia
             className={classes.media}

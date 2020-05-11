@@ -23,6 +23,7 @@ app.use("/", routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
+  //mongodb://user:password1@ds145356.mlab.com:45356/heroku_ttwmczm8
   process.env.MONGODB_URI || "mongodb://user:password1@ds145356.mlab.com:45356/heroku_ttwmczm8",
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );

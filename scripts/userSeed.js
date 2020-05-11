@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const UserModel = require("../models/events.js");
 
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/lively",
+    process.env.MONGODB_URI || "mongodb://user:password1@ds145356.mlab.com:45356/heroku_ttwmczm8",
     { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
 );
 

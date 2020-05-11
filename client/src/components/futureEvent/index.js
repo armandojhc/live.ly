@@ -43,8 +43,8 @@ export default function OutlinedCard() {
 
 	return (
 		<div>{
-			artistData.map((artist) => (
-				<Card className={classes.root} variant="outlined" mb={2}>
+			artistData.map((artist, i) => (
+				<Card key={i} className={classes.root} variant="outlined" mb={2}>
 					<CardContent>
 						<List className={classes.root} aria-label="upcoming events">
 							<ListItem button>
