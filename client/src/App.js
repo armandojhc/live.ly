@@ -7,6 +7,9 @@ import Profile from './pages/profile';
 import SignIn from './pages/signIn';
 import SignUp from './pages/signUp';
 import Footer from './components/footer/index.js';
+import Golive from './pages/golive';
+
+
 
 class App extends Component {
 	render() {
@@ -16,10 +19,10 @@ class App extends Component {
 					<Navbar />
 
 					<Switch>
-						<Route exact path={[ '/homepage' ]}>
+						<Route exact path={[ '/' ]}>
 							<HomePage />
 						</Route>
-						<Route exact path={[ '/' ]}>
+						<Route exact path={[ '/signin' ]}>
 							<SignIn />
 						</Route>
 						<Route exact path={[ '/signup' ]}>
@@ -28,8 +31,12 @@ class App extends Component {
 						<Route exact path={[ '/profile' ]}>
 							<Profile />
 						</Route>
+						<Route exact path={[ '/golive' ]}>
+							<Golive />
+						</Route>
 					</Switch>
 				</div>
+				<Footer />
 			</Router>
 		);
 	}
