@@ -21,6 +21,7 @@ import logo from '../../logo/apple-touch-icon.png';
 import profilepic from '../../logo/profilepic.png';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import VideocamIcon from '@material-ui/icons/Videocam';
 
 const useStyles = makeStyles((theme) => ({
 	grow           : {
@@ -112,7 +113,11 @@ const useStyles = makeStyles((theme) => ({
 	large          : {
 		width  : theme.spacing(7),
 		height : theme.spacing(7)
-	}
+	},
+	iconcolor : {
+		
+		fill:'white',
+	},
 }));
 
 export default function PrimarySearchAppBar() {
@@ -209,6 +214,12 @@ export default function PrimarySearchAppBar() {
 						<Typography variant="h6" className={classes.title}>
 							Live.ly
 						</Typography>
+
+						<IconButton aria-label="logout" color="white" >
+							<Link to="/golive" activeStyle={{color:'white'}}  >
+								<VideocamIcon/>
+							</Link>
+						</IconButton>
 					</div>
 
 					<div className={classes.search}>
@@ -238,6 +249,17 @@ export default function PrimarySearchAppBar() {
 								<NotificationsIcon />
 							</Badge>
 						</IconButton>
+						<MenuItem>
+							<Link to="/Signin">
+								<Button variant="text">Sign in</Button>
+							</Link>
+						</MenuItem>
+						<MenuItem>
+							<Link to="/Signup">
+								<Button variant="text">Sign up</Button>
+							</Link>
+						</MenuItem>
+
 						<IconButton
 							edge="end"
 							aria-label="account of current user"
