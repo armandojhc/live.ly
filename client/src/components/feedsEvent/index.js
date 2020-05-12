@@ -14,11 +14,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import plant from '../../img/plant.jpg';
-import star from '../../img/star.jpg';
-import vegetables from '../../img/vegetables.jpg';
 import Moment from 'react-moment';
 import 'moment-timezone';
+import Category from '../Category';
+import { positions } from '@material-ui/system';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -94,7 +93,9 @@ export default function RecipeReviewCard() {
   // ]
 
   return (
-    <div>{
+    <div>
+      <Category />
+      {
       artistData.map((event) => (
         <Card className={classes.root}>
           <CardHeader
