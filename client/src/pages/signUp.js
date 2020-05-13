@@ -1,5 +1,5 @@
 import React from 'react';
-import Regform from '../components/Regform/regform'
+import Regform from '../components/Regform/regform.js'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
