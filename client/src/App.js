@@ -7,6 +7,7 @@ import Profile from './pages/profile';
 import SignIn from './pages/signIn';
 import SignUp from './pages/signUp';
 import Golive from './pages/golive';
+import Schedule from './pages/schedule';
 
 class App extends Component {
 	render() {
@@ -30,6 +31,9 @@ class App extends Component {
 						</Route>
 						<Route exact path={[ '/golive' ]}>
 							<Golive />
+						</Route>
+						<Route exact path={[ '/schedule' ]}>
+							<Schedule />
 						</Route>
 					</Switch>
 				</div>

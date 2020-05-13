@@ -233,7 +233,7 @@ export default function PrimarySearchAppBar() {
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
 						<IconButton color="action">
-							<Link to="/eventCreator">
+							<Link to="/schedule">
 								<EventNoteIcon color="action" />
 							</Link>
 						</IconButton>
