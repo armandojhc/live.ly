@@ -18,6 +18,7 @@ import img1 from '../img/bike.jpg';
 import img2 from '../img/breakfast.jpg';
 import img3 from '../img/burgers.jpg';
 import img4 from '../img/camera.jpg';
+import ReactLivestream from '../components/livestreaming/livestreaming';
 
 const tileData = [
 	{
@@ -195,11 +196,16 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
+
+
+
 function Profile() {
 	const classes = useStyles();
 	return (
 		<div>
 			<ProfileInfo />
+
+			<ReactLivestream/>
 
 			<Container maxWidth="sm">
 				<div className={classes.root2}>
@@ -209,7 +215,8 @@ function Profile() {
 						</GridListTile>
 						{tileData.map((tile) => (
 							<GridListTile key={tile.img}>
-								<img src={tile.img} alt={tile.title} />
+								<ReactLivestream/>
+								{/* <img src={tile.img} alt={tile.title} /> */}
 								<GridListTileBar
 									title={tile.title}
 									subtitle={<span>likes: {tile.author}</span>}
