@@ -22,6 +22,7 @@ import profilepic from '../../logo/profilepic.png';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import VideocamIcon from '@material-ui/icons/Videocam';
+import EventNoteIcon from '@material-ui/icons/EventNote';
 
 const useStyles = makeStyles((theme) => ({
 	grow           : {
@@ -114,10 +115,9 @@ const useStyles = makeStyles((theme) => ({
 		width  : theme.spacing(7),
 		height : theme.spacing(7)
 	},
-	iconcolor : {
-		
-		fill:'white',
-	},
+	iconcolor      : {
+		fill : 'white'
+	}
 }));
 
 export default function PrimarySearchAppBar() {
@@ -211,15 +211,9 @@ export default function PrimarySearchAppBar() {
 						<Link to="/">
 							<Avatar alt="Lively logo" src={logo} />
 						</Link>
-						<Typography variant="h6" className={classes.title}>
+						<Badge to="/" color="inherit">
 							Live.ly
-						</Typography>
-
-						<IconButton aria-label="logout" color="white" >
-							<Link to="/golive" activeStyle={{color:'white'}}  >
-								<VideocamIcon/>
-							</Link>
-						</IconButton>
+						</Badge>
 					</div>
 
 					<div className={classes.search}>
@@ -238,27 +232,17 @@ export default function PrimarySearchAppBar() {
 
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
-						<IconButton aria-label="show 4 new mails" color="inherit">
-							<Badge badgeContent={4} color="secondary">
-								<MailIcon />
-							</Badge>
+						<IconButton color="action">
+							<Link to="/eventCreator">
+								<EventNoteIcon color="action" />
+							</Link>
 						</IconButton>
 
-						<IconButton aria-label="show 17 new notifications" color="inherit">
-							<Badge badgeContent={17} color="secondary">
-								<NotificationsIcon />
-							</Badge>
+						<IconButton color="action">
+							<Link to="/golive">
+								<VideocamIcon color="action" />
+							</Link>
 						</IconButton>
-						<MenuItem>
-							<Link to="/Signin">
-								<Button variant="text">Sign in</Button>
-							</Link>
-						</MenuItem>
-						<MenuItem>
-							<Link to="/Signup">
-								<Button variant="text">Sign up</Button>
-							</Link>
-						</MenuItem>
 
 						<IconButton
 							edge="end"
