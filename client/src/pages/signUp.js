@@ -32,7 +32,7 @@ export default function SignUp() {
 				</Grid>
 				<Grid item xs={12}>
 					<Paper className={classes.paper}>
-						<Regform />
+						<Regform fullWidth />
 					</Paper>
 				</Grid>
 			</Grid>
