@@ -1,5 +1,5 @@
 import React from 'react';
-// import Regform from '../components/Regform/regform'
+import Regform from '../components/Regform/regform'
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -32,7 +32,7 @@ export default function SignUp() {
 				</Grid>
 				<Grid item xs={12}>
 					<Paper className={classes.paper}>
-						{/* <Regform /> */}
+						<Regform />
 					</Paper>
 				</Grid>
 			</Grid>

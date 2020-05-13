@@ -5,6 +5,7 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "@material-ui/core": "^4.9.12",
+    "axios": "^0.19.2",
     "moment-timezone": "^0.5.28",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",

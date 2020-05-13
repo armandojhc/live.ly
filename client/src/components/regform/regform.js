@@ -1,13 +1,13 @@
-import React, { useState, ChangeEvent } from "./node_modules/reacte_modules/react";
-import API from "../utils/API";
-import { makeStyles } from './node_modules/@material-ui/core/styles-ui/core/styles';
-import Radio from './node_modules/@material-ui/core/Radiol-ui/core/Radio';
-import RadioGroup from './node_modules/@material-ui/core/RadioGroupcore/RadioGroup';
-import FormControlLabel from './node_modules/@material-ui/core/FormControlLabelormControlLabel';
-import FormControl from './node_modules/@material-ui/core/FormControlore/FormControl';
-import FormLabel from './node_modules/@material-ui/core/FormLabel/core/FormLabel';
-import TextField from './node_modules/@material-ui/core/TextField/core/TextField';
-import Button from './node_modules/@material-ui/core/Button-ui/core/Button';
+import React, { useState, ChangeEvent } from "react";
+import API from "../../utils/API";
+import { makeStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import TextField from '@material-ui/core//TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -43,7 +43,6 @@ export default function Regform() {
                 <RadioGroup aria-label="type" name="type" value={value} onChange={handleChange}>
                     <FormControlLabel value="fan" control={<Radio />} label="Fan" />
                     <FormControlLabel value="artist" control={<Radio />} label="Artist" />
-                    <FormControlLabel value="admin" control={<Radio />} label="Admin" />
                 </RadioGroup>
             </FormControl>
             <TextField id="email" label="Email Address" variant="outlined" />
@@ -52,7 +51,7 @@ export default function Regform() {
             <TextField id="facebook" label="Facebook URL" variant="outlined" />
             <TextField id="instagram" label="Instagram URL" variant="outlined" />
             <TextField id="twitter" label="Twitter URL" variant="outlined" />
-            <Button onClick={() => submitUser(user._id)} variant="contained" color="primary">
+            <Button onClick={() => submitUser()} variant="contained" color="primary">
                 Submit
             </Button>
         </form>
