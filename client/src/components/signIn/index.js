@@ -39,7 +39,7 @@ export default function FormPropsTextFields() {
 							<TextField
 								className={classes.margin}
 								id="input-with-icon-textfield"
-								label="email or username"
+								label="email"
 								InputProps={{
 									startAdornment : (
 										<InputAdornment position="start">
