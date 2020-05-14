@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import MessageInput from '../messageInput/messageInput'
-
+import { Link } from 'react-router-dom';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function getSteps() {
-    return [`Event_Name`, `Event_Link`, `Event_Date`];
+    return [`Name`, `Platform`, `Date`, `Gif`,`Photo`];
 }
 
 function getStepContent(step) {
@@ -52,8 +52,29 @@ function getStepContent(step) {
             return `Where would you be Broadcasting from?, We don't want to miss anything`;
         case 2:
             return `When is this happening? We want to make sure to put it in our calendar!`;
+        case 3:
+            return `Upload a Gif of your live presentation`;
+        case 4:
+            return `Upload a Photo cover of your Live`;
         default:
             return 'Unknown step';
+    }
+}
+
+function getValidation(step){
+
+    switch(step){
+
+        case 0:
+            return `text`;
+        case 1: 
+            return `url`;
+        case 2:
+            return `datetime-local`;
+        case 3: 
+            return `url`;
+        case 4: 
+            return `url`;
     }
 }
 
@@ -63,16 +84,18 @@ export default function VerticalLinearStepper() {
     const classes = useStyles();
 
     const [values, setValues] = React.useState({
-        Event_Name: '',
-        Event_Link: '',
-        Event_Date: ''
+        Name: '',
+        Platform: '',
+        Date: '',
+        Gif: ' ',
+        Photo: ' '
     });
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
-        console.log('Event Name: ', values.Event_Name, 'Event Link: ', values.Event_Link, 'Event Date: ', values.Event_Date);
+        console.log('Event Name: ', values.Event_Name, 'Event Link: ', values.Event_Link, 'Event Date: ', values.Event_Date, 'Gif: ', values.Gif, 'Photo: ', values.Photo);
         console.log('writing on: ', prop);
     };
     
@@ -87,6 +110,7 @@ export default function VerticalLinearStepper() {
 
     const handleReset = () => {
         setActiveStep(0);
+        
     };
 
     return (
@@ -97,12 +121,12 @@ export default function VerticalLinearStepper() {
                         <StepLabel>{label}</StepLabel>
                         <StepContent>
                             <Typography>{getStepContent(index)}</Typography>
-
+                            
                             <FormControl fullWidth className={classes.margin} variant="outlined">
                                 <InputLabel htmlFor="outlined-adornment-amount">{label}</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-amount"
-                                 
+                                    type={getValidation(index)}
                                     onChange={handleChange(label)}
                                     startAdornment={<InputAdornment position="start">></InputAdornment>}
                                     labelWidth={60}
@@ -135,9 +159,15 @@ export default function VerticalLinearStepper() {
             {activeStep === steps.length && (
                 <Paper square elevation={0} className={classes.resetContainer}>
                     <Typography>All steps completed - we can&apos;t wait to see you!</Typography>
+                 
                     <Button onClick={handleReset} className={classes.button}>
                         Reset
-          </Button>
+                     </Button>
+                     <Link to='/'>
+                     <Button  className={classes.button}>
+                        See Feeds
+                     </Button>
+                     </Link>
                 </Paper>
             )}
         </div>
