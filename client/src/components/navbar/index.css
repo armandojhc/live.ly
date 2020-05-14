@@ -1,5 +1,8 @@
 .MuiAppBar-colorPrimary {
 	color: black;
-	background-color: rgb(169,25,131) !important;
+	background-color: rgb(169, 25, 131) !important;
 }
-/*  */
+
+/* .MuiAvatar-root {
+	width: 90px !important;
+} */

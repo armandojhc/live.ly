@@ -18,6 +18,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import Avatar from '@material-ui/core/Avatar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import logo from '../../logo/apple-touch-icon.png';
+import LiveLyTitle from '../../logo/Live.ly-logo.png';
 import profilepic from '../../logo/profilepic.png';
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -55,9 +56,9 @@ const useStyles = makeStyles((theme) => ({
 	search         : {
 		position                     : 'relative',
 		borderRadius                 : theme.shape.borderRadius,
-		backgroundColor              : fade(theme.palette.common.white, 0.15),
+		backgroundColor              : fade(theme.palette.common.black, 0.15),
 		'&:hover'                    : {
-			backgroundColor : fade(theme.palette.common.white, 0.25)
+			backgroundColor : fade(theme.palette.common.black, 0.25)
 		},
 		marginRight                  : theme.spacing(2),
 		marginLeft                   : 0,
@@ -103,9 +104,11 @@ const useStyles = makeStyles((theme) => ({
 	},
 	root1          : {
 		display : 'flex',
-		'& > *' : {
-			margin : theme.spacing(1)
-		}
+		width   : '90'
+
+		// '& > *' : {
+		// 	margin : theme.spacing(1)
+		// }
 	},
 	small          : {
 		width  : theme.spacing(3),
@@ -157,7 +160,7 @@ export default function PrimarySearchAppBar() {
 			onClose={handleMenuClose}
 		>
 			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
+			{/* <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
 		</Menu>
 	);
 
@@ -173,32 +176,35 @@ export default function PrimarySearchAppBar() {
 			onClose={handleMobileMenuClose}
 		>
 			<MenuItem>
-				<IconButton aria-label="show 4 new mails" color="inherit">
-					<Badge badgeContent={4} color="secondary">
-						<MailIcon />
-					</Badge>
+				<IconButton color="action">
+					<Link to="/golive">
+						<VideocamIcon color="action" />
+						{/* <p>Go Live!</p> */}
+					</Link>
 				</IconButton>
-				<p>Messages</p>
 			</MenuItem>
 			<MenuItem>
-				<IconButton aria-label="show 11 new notifications" color="inherit">
-					<Badge badgeContent={11} color="secondary">
-						<NotificationsIcon />
-					</Badge>
+				<IconButton color="action">
+					<Link to="/schedule">
+						<EventNoteIcon color="action" />
+						{/* <p>Create Event</p> */}
+					</Link>
 				</IconButton>
-				<p>Notifications</p>
 			</MenuItem>
 
 			<MenuItem onClick={handleProfileMenuOpen}>
 				<IconButton
+					edge="end"
 					aria-label="account of current user"
-					aria-controls="primary-search-account-menu"
+					aria-controls={menuId}
 					aria-haspopup="true"
+					// onClick={handleProfileMenuOpen}
 					color="inherit"
 				>
-					<AccountCircle />
+					<Link to="/Profile">
+						<Avatar alt="profile" src={profilepic} className={classes.small} />
+					</Link>
 				</IconButton>
-				<p>Profile</p>
 			</MenuItem>
 		</Menu>
 	);
@@ -211,9 +217,9 @@ export default function PrimarySearchAppBar() {
 						<Link to="/">
 							<Avatar alt="Lively logo" src={logo} />
 						</Link>
-						<Badge to="/" color="inherit">
-							Live.ly
-						</Badge>
+						<Link to="/">
+							<Avatar alt="Lively title" src={LiveLyTitle} />
+						</Link>
 					</div>
 
 					<div className={classes.search}>
@@ -234,13 +240,13 @@ export default function PrimarySearchAppBar() {
 					<div className={classes.sectionDesktop}>
 						<IconButton color="action">
 							<Link to="/schedule">
-								<EventNoteIcon color="action" />
+								<EventNoteIcon color="action" className={classes.large} />
 							</Link>
 						</IconButton>
 
 						<IconButton color="action">
 							<Link to="/golive">
-								<VideocamIcon color="action" />
+								<VideocamIcon color="action" className={classes.large} />
 							</Link>
 						</IconButton>
 
@@ -275,7 +281,7 @@ export default function PrimarySearchAppBar() {
 							aria-controls={mobileMenuId}
 							aria-haspopup="true"
 							onClick={handleMobileMenuOpen}
-							color="inherit"
+							// color="inherit"
 						>
 							<MoreIcon />
 						</IconButton>
