@@ -8,11 +8,12 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 const useStyles = makeStyles({
 	root   : {
 		minWidth   : 275,
-		background : 'transparent'
+		background : 'white'
 	},
 	bullet : {
 		display   : 'inline-block',
@@ -47,7 +48,11 @@ export default function SimpleCard() {
 						>
 							Meet the Team
 						</Typography>
-						<CardActions>
+						<Typography
+							className={classes.title}
+							color="textSecondary"
+							gutterBottom
+						>
 							<Button size="small" className={classes.link}>
 								<a href="https://github.com/armandojhc" target="blank">
 									Armando H.
@@ -68,16 +73,28 @@ export default function SimpleCard() {
 									Roger C.
 								</a>
 							</Button>
-						</CardActions>
+						</Typography>
 					</CardContent>
-					<CardActions>
-						<Button size="small">
+					<CardContent
+						className={classes.title}
+						color="textSecondary"
+						gutterBottom
+					>
+						<Typography>
 							<a href="https://github.com/armandojhc/live.ly" target="blank">
 								Learn More
 							</a>
-						</Button>
-					</CardActions>
-					<span> 2020 Live.ly</span>
+							<GitHubIcon />
+						</Typography>
+					</CardContent>
+					<Typography
+						className={classes.title}
+						color="textSecondary"
+						gutterBottom
+					>
+						{' '}
+						&copy; {new Date().getFullYear()} Live.ly Inc | All Rights Reserved
+					</Typography>
 				</Card>
 			</Grid>
 		</div>

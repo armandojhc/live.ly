@@ -3,6 +3,7 @@
 	background-color: rgb(169, 25, 131) !important;
 }
 
-/* .MuiAvatar-root {
-	width: 90px !important;
-} */
+.MuiAvatar-root {
+	width: 70px !important;
+	height: 40px !important;
+}
