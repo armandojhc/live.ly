@@ -1,4 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
+
+
 
 export default {
   // Gets all live.ly events
@@ -7,7 +9,7 @@ export default {
   },
   // Gets the event with the given id
   getEvent: function(id) {
-    return axios.get("api/event" + id);
+    return axios.get("api/events/" + id);
   },
   // Deletes the event with the given id
   deleteEvent: function(id) {
@@ -19,6 +21,6 @@ export default {
   },
   // Saves a user to the database
   saveUser: function(userData) {
-    return axios.post("/api/user", userData);
+    return axios.post("/api/auth/signup", userData);
   }
 };

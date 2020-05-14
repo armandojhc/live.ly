@@ -22,18 +22,39 @@ const useStyles = makeStyles((theme) => ({
 export default function Regform() {
     const classes = useStyles();
     const [user, saveUser] = useState([]);
+    // needs
     const [value, setValue] = React.useState('fan');
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
 
+    // Every field in the form needs to have an on- chnage function define as well as a corresponding hook. So when we go post data 
+//  The hooks need to be written so that every time the field is updated the hook is also updated
+// Main issue is that the way the data is givin to the server side. 
+//  
 
     const handleChange = (event) => {
         setValue(event.target.value);
       };
 
     function submitUser() {
-        API.saveUser.then(res => {
+        API.saveUser({
+            name: name,
+            email: email
+        }).then(res => {
             saveUser(res.data)
             console.log(res.data);
         }).catch(err => console.log(err));
+    }
+
+    function handleNameChange(event) {
+        setName(event.target.value);
+        //console.log(event.target.value);
+    }
+
+    function handleEmailChange(event) {
+        setEmail(event.target.value);
+        //console.log(event.target.value);
     }
 
     return (
@@ -45,8 +66,8 @@ export default function Regform() {
                     <FormControlLabel value="artist" control={<Radio />} label="Artist" />
                 </RadioGroup>
             </FormControl>
-            <TextField fullWidth margin="normal" id="name" label="Full Name" variant="outlined" />
-            <TextField fullWidth margin="normal" id="email" label="Email Address" variant="outlined" />
+            <TextField fullWidth margin="normal" value={name} id="name" onChange={handleNameChange} label="Full Name" variant="outlined" />
+            <TextField fullWidth margin="normal" value={email} onChange={handleEmailChange} id="email" label="Email Address" variant="outlined" />
             <TextField fullWidth margin="normal" id="password" type="password" label="Password" variant="outlined" />
             <TextField fullWidth margin="normal" id="avatar" label="Avatar URL" variant="outlined" />
             <TextField fullWidth margin="normal" id="facebook" label="Facebook URL" variant="outlined" />
