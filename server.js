@@ -7,6 +7,7 @@ const app = express();
 const routes = require("./routes");
 const eventsRouter = require("./routes/api/liveEvents.js");
 const usersRouter = require("./routes/api/users.js");
+const authRouter = require("./routes/api/auth.js");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use("/api/events", eventsRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/auth", authRouter);
 app.use("/", routes);
 
 // Connect to the Mongo DB

@@ -29,7 +29,7 @@ export default function Form() {
         setSelectedDate(date);
     };
     function submitEvent() {
-        API.saveEvent.then(res => {
+    API.saveEvent.then(res => {
             saveUser(res.data)
             console.log(res.data);
         }).catch(err => console.log(err));

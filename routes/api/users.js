@@ -24,15 +24,15 @@ router.get("/:userid", (req, user) => {
     })
 })
 
-router.post("/user", (req, user) => {
+// router.post("/user", (req, user) => {
 
-    Users.post({}, (err, user) => {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(user);
-        }
-    })
-});
+//     Users.post({}, (err, user) => {
+//         if (err) {
+//             res.send(err);
+//         } else {
+//             res.json(user);
+//         }
+//     })
+// });
 
 module.exports = router;
