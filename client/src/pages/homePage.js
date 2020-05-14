@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 		flexGrow : 1
 	},
 	paper     : {
-		padding   : theme.spacing(2),
+		padding   : theme.spacing(3),
 		textAlign : 'center',
 		color     : theme.palette.text.secondary
 	},
@@ -27,7 +27,7 @@ export default function CenteredGrid() {
 	{
 		return (
 			<div>
-				<Container maxWidth="md" className={classes.container}>
+				<Container maxWidth="lg" className={classes.container}>
 					<Grid container spacing={3}>
 						<Grid item xs={12}>
 							<Paper className={classes.paper}>
