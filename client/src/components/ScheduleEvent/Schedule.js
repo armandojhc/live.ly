@@ -95,7 +95,7 @@ export default function VerticalLinearStepper() {
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
-        console.log('Event Name: ', values.Event_Name, 'Event Link: ', values.Event_Link, 'Event Date: ', values.Event_Date, 'Gif: ', values.Gif, 'Photo: ', values.Photo);
+        console.log('Event Name: ', values.Name, 'Event Link: ', values.Platform, 'Event Date: ', values.Date, 'Gif: ', values.Gif, 'Photo: ', values.Photo);
         console.log('writing on: ', prop);
     };
     
@@ -130,6 +130,7 @@ export default function VerticalLinearStepper() {
                                     onChange={handleChange(label)}
                                     startAdornment={<InputAdornment position="start">></InputAdornment>}
                                     labelWidth={60}
+                                
                                 />
                             </FormControl>
 
