@@ -5,39 +5,39 @@ const jwt = require('jsonwebtoken');
 const secret = "NOT_SECRET_SECRET";
 //www.url.com/api/auth/signup
 router.post("/signup", (req, res, next) => {
+    User.findOne({ email: req.body.email }, (err, user) => {
 
-    console.log(req.body);
-    res.send("Signup");
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
 
-    // User.findOne({ email: req.body.email }, (err, user) => {
+        if (user) {
+            res.status(403);
+            return next(new Error("That username already exists"));
+        }
 
-    //     if (err) {
-    //         res.status(500);
-    //         return next(err);
-    //     }
+        let newUser = new User();
+        newUser.regType = req.body.regType;
+        newUser.email = req.body.email;
+        newUser.password = req.body.password;
+        newUser.avatar = req.body.avatar;
+        newUser.name = req.body.name;
+        newUser.facebook = req.body.facebook;
+        newUser.instagram = req.body.instagram;
+        newUser.twitter = req.body.twitter;
 
-    //     if (user) {
-    //         res.status(403);
-    //         return next(new Error("That username already exists"));
-    //     }
+        newUser.save((err, savedUser) => {
+            if (err) {
+                res.status(500);
+                return next(err);
+            }
 
-    //     let newUser = new User();
-    //     newUser.email = req.body.email;
-    //     newUser.password = req.body.password;
-    //     newUser.avatarURL = req.body.avatarURL;
-    //     newUser.name = req.body.name;
+            const token = jwt.sign(savedUser.withoutPassword(), secret);
+            return res.status(201).send({ token, user: savedUser.withoutPassword() });
+        })
 
-    //     newUser.save((err, savedUser) => {
-    //         if (err) {
-    //             res.status(500);
-    //             return next(err);
-    //         }
-
-    //         const token = jwt.sign(savedUser.withoutPassword(), secret);
-    //         return res.status(201).send({ token, user: savedUser.withoutPassword() });
-    //     })
-
-    // })
+    })
 });
 
 router.post("/login", (req, res, next) => {

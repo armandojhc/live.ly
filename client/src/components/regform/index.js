@@ -1,4 +1,5 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import API from "../../utils/API";
 import { makeStyles } from '@material-ui/core/styles';
 import Radio from '@material-ui/core/Radio';
@@ -19,63 +20,131 @@ const useStyles = makeStyles((theme) => ({
       }
 }));
 
-export default function Regform() {
+function Regform(props) {
     const classes = useStyles();
-    const [user, saveUser] = useState([]);
-    // needs
-    const [value, setValue] = React.useState('fan');
-    const [password, setPassword] = useState("");
-    const [email, setEmail] = useState("");
-    const [name, setName] = useState("");
-
-    // Every field in the form needs to have an on- chnage function define as well as a corresponding hook. So when we go post data 
-//  The hooks need to be written so that every time the field is updated the hook is also updated
-// Main issue is that the way the data is givin to the server side. 
-//  
+    const initialState = {
+        regType: 'fan',
+        name: '',
+        email: '',
+        password: '',
+        avatar: '',
+        facebook: '',
+        instagram: '',
+        twitter: ''
+    };
+    const [formData, setFormData] = useState(initialState);
 
     const handleChange = (event) => {
-        setValue(event.target.value);
-      };
+        const fieldName = event.target.name;
+        const value = event.target.value;
+        setFormData(prevState => {
+            let newState = { ...prevState };
+            newState[fieldName] = value;
+            return newState;
+        });
+    };
+
+    function removeEmptyProps(obj) {
+        const newObj = { ...obj };
+        for (var propName in obj) { 
+          if (obj[propName] === null || obj[propName] === undefined || obj[propName] === "") {
+            delete newObj[propName];
+          }
+        }
+        return newObj;
+      }
 
     function submitUser() {
-        API.saveUser({
-            name: name,
-            email: email
-        }).then(res => {
-            saveUser(res.data)
-            console.log(res.data);
+        const userForm = removeEmptyProps(formData);
+        console.log(userForm);
+        API.saveUser(userForm)
+        .then(res => {
+            setFormData(initialState);
+            props.history.push("/");
         }).catch(err => console.log(err));
-    }
-
-    function handleNameChange(event) {
-        setName(event.target.value);
-        //console.log(event.target.value);
-    }
-
-    function handleEmailChange(event) {
-        setEmail(event.target.value);
-        //console.log(event.target.value);
-    }
+    };
 
     return (
         <form className={classes.root} noValidate autoComplete="off">
             <FormControl className={classes.root}>
                 <FormLabel component="legend">Registration Type</FormLabel>
-                <RadioGroup aria-label="type" name="type" value={value} onChange={handleChange} >
+                <RadioGroup aria-label="type" name="regType" value={formData.regType} onChange={handleChange} >
                     <FormControlLabel value="fan" control={<Radio />} label="Fan" />
                     <FormControlLabel value="artist" control={<Radio />} label="Artist" />
                 </RadioGroup>
             </FormControl>
-            <TextField fullWidth margin="normal" value={name} id="name" onChange={handleNameChange} label="Full Name" variant="outlined" />
-            <TextField fullWidth margin="normal" value={email} onChange={handleEmailChange} id="email" label="Email Address" variant="outlined" />
-            <TextField fullWidth margin="normal" id="password" type="password" label="Password" variant="outlined" />
-            <TextField fullWidth margin="normal" id="avatar" label="Avatar URL" variant="outlined" />
-            <TextField fullWidth margin="normal" id="facebook" label="Facebook URL" variant="outlined" />
-            <TextField fullWidth margin="normal" id="instagram" label="Instagram URL" variant="outlined" />
-            <TextField fullWidth margin="normal" id="twitter" label="Twitter URL" variant="outlined" />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"name"}
+                name={"name"}
+                label={"Full Name"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.name} />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"email"}
+                name={"email"}
+                label={"Email Address"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.email} />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"password"}
+                type={"password"}
+                name={"password"}
+                label={"Password"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.password} />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"avatar"}
+                name={"avatar"}
+                label={"Avatar URL"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.avatar} />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"facebook"}
+                name={"facebook"}
+                label={"Facebook URL"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.facebook}
+                style={formData.regType !== "artist" ? { display: "none" } : {}} />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"instagram"}
+                name={"instagram"}
+                label={"Instagram URL"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.instagram}
+                style={formData.regType !== "artist" ? { display: "none" } : {}} />
+            <TextField
+                fullWidth={true}
+                margin={"normal"}
+                id={"twitter"}
+                name={"twitter"}
+                label={"Twitter URL"}
+                variant={"outlined"}
+                onChange={handleChange}
+                value={formData.twitter}
+                style={formData.regType !== "artist" ? { display: "none" } : {}} />
             <Button onClick={() => submitUser()} variant="contained" color="primary">
                 Submit
             </Button>
         </form>
     );
 }
+
+export default withRouter(Regform);
