@@ -81,15 +81,16 @@ function getValidation(step){
 
 
 
-export default function VerticalLinearStepper() {
+export default function VerticalLinearStepper(props) {
     const classes = useStyles();
+    const { addEvent } = props;
 
     const initialState = {
-        name: '',
-        platform: '',
-        date: '',
-        gif: '',
-        photo: ''
+        name: 'test',
+        platform: 'facebook',
+        date: '6/23/2020',
+        gif: 'url.gif',
+        photo: 'img.png'
     };
 
     const [values, setValues] = React.useState(initialState);
@@ -101,11 +102,14 @@ export default function VerticalLinearStepper() {
     };
 
     const handleSave = () => {
-        API.saveEvent(values)
-        .then(() => {
-            setActiveStep((prevActiveStep) => prevActiveStep + 1);
-        })
-        .catch(err => console.log(err));
+        console.log(values);
+        // API.saveEvent(values)
+        // .then(() => {
+        //     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        // })
+        // .catch(err => console.log(err));
+
+        addEvent(values);
     };
 
     const handleNext = () => {

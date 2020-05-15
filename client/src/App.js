@@ -1,45 +1,71 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
 import './App.css';
 import Navbar from './components/navbar/index';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect
+} from 'react-router-dom';
 import HomePage from './pages/homePage';
 import Profile from './pages/profile';
 import SignIn from './pages/signIn';
 import SignUp from './pages/signUp';
 import Golive from './pages/golive';
 import Schedule from './pages/schedule';
+import { UserContext } from './context/userProvider.js';
 
-class App extends Component {
-	render() {
-		return (
-			<Router>
-				<div className="App">
-					<Navbar />
+function App() {
+	const { authUser, token, user, logout, addEvent } = useContext(UserContext);
+	console.log(authUser);
+	//render() {
+	return (
+		<Router>
+			<div className="App">
+				<Navbar user={user} />
 
-					<Switch>
-						<Route exact path={[ '/' ]}>
-							<SignIn />
-						</Route>
-						<Route exact path={[ '/homepage' ]}>
-							<HomePage />
-						</Route>
-						<Route exact path={[ '/signup' ]}>
-							<SignUp />
-						</Route>
-						<Route exact path={[ '/profile' ]}>
-							<Profile />
-						</Route>
-						<Route exact path={[ '/golive' ]}>
-							<Golive />
-						</Route>
-						<Route exact path={[ '/schedule' ]}>
-							<Schedule />
-						</Route>
-					</Switch>
-				</div>
-			</Router>
-		);
-	}
+				<Switch>
+					<Route exact path={[ '/' ]}>
+						<HomePage />
+					</Route>
+					<Route
+						exact
+						path="/signin"
+						render={() =>
+							token ? (
+								<Redirect to="/profile" />
+							) : (
+								<SignIn authUser={authUser} />
+							)}
+					/>
+					{/* <Route exact path={[ '/signin' ]}>
+							 </Route>*/}
+
+					<Route exact path={[ '/signup' ]}>
+						<SignUp />
+					</Route>
+					<Route
+						exact
+						path="/profile"
+						render={() =>
+							token ? (
+								<Profile user={user} logout={logout} />
+							) : (
+								<Redirect to="/signin" />
+							)}
+					/>
+
+					<Route exact path={[ '/golive' ]}>
+						<Golive />
+					</Route>
+					<Route exact path={[ '/schedule' ]}>
+						<Schedule addEvent={addEvent} />
+					</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
+	//}
 }
 
 export default App;

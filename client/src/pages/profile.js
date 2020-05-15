@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Feeds from '../components/feedsEvent/index';
 import Footer from '../components/bottom-footer';
 import { makeStyles } from '@material-ui/core/styles';
@@ -191,11 +191,14 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-function Profile() {
+function Profile(props) {
 	const classes = useStyles();
+	const { user, logout } = props;
+	console.log(user);
 	return (
 		<div>
-			<ProfileInfo />
+			<button onClick={() => {logout()}}>Logout</button>
+			<ProfileInfo user={user} />
 
 			<Container maxWidth="sm" className={classes.paper}>
 				<div className={classes.root2}>

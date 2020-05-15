@@ -123,7 +123,9 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
+	const { user } = props;
+
 	const classes = useStyles();
 	const [ anchorEl, setAnchorEl ] = React.useState(null);
 	const [ mobileMoreAnchorEl, setMobileMoreAnchorEl ] = React.useState(null);
@@ -202,7 +204,7 @@ export default function PrimarySearchAppBar() {
 					color="inherit"
 				>
 					<Link to="/Profile">
-						<Avatar alt="profile" src={profilepic} className={classes.small} />
+						<Avatar alt="profile" src={user.avatarURL} className={classes.small} />
 					</Link>
 				</IconButton>
 			</MenuItem>
