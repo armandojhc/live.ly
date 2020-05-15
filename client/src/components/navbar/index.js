@@ -140,7 +140,7 @@ export default function PrimarySearchAppBar() {
 
 	const handleChange = (prop)=> (event)=>{
 		setUser({...users,[prop]:event.target.value});
-		console.log(users.artist)
+		console.log('searching for: ', users.artist)
 	}
 	
 	const handleProfileMenuOpen = (event) => {
