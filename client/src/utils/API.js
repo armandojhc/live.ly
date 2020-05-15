@@ -5,11 +5,11 @@ import axios from 'axios';
 export default {
   // Gets all live.ly events
   getEvents: function() {
-    return axios.get("api/events");
+    return axios.get("api/event");
   },
   // Gets the event with the given id
   getEvent: function(id) {
-    return axios.get("api/events/" + id);
+    return axios.get("api/event/" + id);
   },
   // Deletes the event with the given id
   deleteEvent: function(id) {

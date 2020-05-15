@@ -53,7 +53,7 @@ export default function RecipeReviewCard() {
 
     //Get the data from the server
     console.log("Getting data...");
-    fetch("/api/events")
+    fetch("/api/event")
     .then(res => res.json())
     .then(json => {
       console.log(json);
@@ -99,10 +99,11 @@ export default function RecipeReviewCard() {
       artistData.map((event) => (
         <Card className={classes.root}>
           <CardHeader
-            avatar={
+            avatar={event.eventOwner && event.eventOwner.avatarURL ?
               <Avatar aria-label="avatar" className={classes.avatar} src={event.eventOwner.avatarURL}>
                 R
-          </Avatar>
+              </Avatar>
+              : null
             }
             action={
               <IconButton aria-label="settings">

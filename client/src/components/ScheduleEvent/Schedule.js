@@ -14,6 +14,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import API from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function getSteps() {
-    return [`Name`, `Platform`, `Date`, `Gif`,`Photo`];
+    return [`name`, `platform`, `date`, `gif`,`photo`];
 }
 
 function getStepContent(step) {
@@ -83,22 +84,29 @@ function getValidation(step){
 export default function VerticalLinearStepper() {
     const classes = useStyles();
 
-    const [values, setValues] = React.useState({
-        Name: '',
-        Platform: '',
-        Date: '',
-        Gif: ' ',
-        Photo: ' '
-    });
+    const initialState = {
+        name: '',
+        platform: '',
+        date: '',
+        gif: '',
+        photo: ''
+    };
+
+    const [values, setValues] = React.useState(initialState);
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
-        console.log('Event Name: ', values.Name, 'Event Link: ', values.Platform, 'Event Date: ', values.Date, 'Gif: ', values.Gif, 'Photo: ', values.Photo);
-        console.log('writing on: ', prop);
     };
-    
+
+    const handleSave = () => {
+        API.saveEvent(values)
+        .then(() => {
+            setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        })
+        .catch(err => console.log(err));
+    };
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -109,8 +117,8 @@ export default function VerticalLinearStepper() {
     };
 
     const handleReset = () => {
-        setActiveStep(0);
-        
+        setValues(initialState);
+        setActiveStep(0);       
     };
 
     return (
@@ -146,7 +154,7 @@ export default function VerticalLinearStepper() {
                                     <Button
                                         variant="contained"
                                         color="primary"
-                                        onClick={handleNext}
+                                        onClick={activeStep === steps.length - 1 ? handleSave : handleNext}
                                         className={classes.button}
                                     >
                                         {activeStep === steps.length - 1 ? 'Finish' : 'Next'}

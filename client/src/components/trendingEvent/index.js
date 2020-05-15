@@ -37,7 +37,7 @@ export default function SingleLineGridList() {
 
 		//Get the data from the server
 		console.log("Getting data...");
-		fetch("/api/events")
+		fetch("/api/event")
 		.then(res => res.json())
 		.then(json => {
 		  console.log(json);
