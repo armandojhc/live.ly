@@ -19,8 +19,8 @@ import API from "../../utils/API";
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
-        marginTop:'60px',
-        
+        marginTop: '60px',
+
     },
     button: {
         marginTop: theme.spacing(1),
@@ -42,39 +42,39 @@ const useStyles = makeStyles((theme) => ({
 
 
 function getSteps() {
-    return [`name`, `platform`, `date`, `gif`,`photo`];
+    return [`Name`, `Platform`, `Date`, `Gif URL`, `Event Photo URL`];
 }
 
 function getStepContent(step) {
     switch (step) {
         case 0:
-            return `Let's name this event! Give us an idea what we will see on your live`;
+            return `Let's name this event! Give us an idea what we will see on your live.ly`;
         case 1:
-            return `Where would you be Broadcasting from?, We don't want to miss anything`;
+            return `Where will you be Broadcasting from?, We don't want to miss anything`;
         case 2:
             return `When is this happening? We want to make sure to put it in our calendar!`;
         case 3:
-            return `Upload a Gif of your live presentation`;
+            return `Upload a Gif of your live.ly presentation`;
         case 4:
-            return `Upload a Photo cover of your Live`;
+            return `Upload a Photo cover of your live.ly`;
         default:
             return 'Unknown step';
     }
 }
 
-function getValidation(step){
+function getValidation(step) {
 
-    switch(step){
+    switch (step) {
 
         case 0:
             return `text`;
-        case 1: 
+        case 1:
             return `url`;
         case 2:
             return `datetime-local`;
-        case 3: 
+        case 3:
             return `url`;
-        case 4: 
+        case 4:
             return `url`;
     }
 }
@@ -87,10 +87,10 @@ export default function VerticalLinearStepper(props) {
 
     const initialState = {
         name: 'test',
-        platform: 'facebook',
-        date: '6/23/2020',
-        gif: 'url.gif',
-        photo: 'img.png'
+        eventLink: 'facebook',
+        eventDate: '6/23/2020',
+        gifURL: 'url.gif',
+        eventPhotoURL: 'img.png'
     };
 
     const [values, setValues] = React.useState(initialState);
@@ -122,7 +122,7 @@ export default function VerticalLinearStepper(props) {
 
     const handleReset = () => {
         setValues(initialState);
-        setActiveStep(0);       
+        setActiveStep(0);
     };
 
     return (
@@ -133,7 +133,7 @@ export default function VerticalLinearStepper(props) {
                         <StepLabel>{label}</StepLabel>
                         <StepContent>
                             <Typography>{getStepContent(index)}</Typography>
-                            
+
                             <FormControl fullWidth className={classes.margin} variant="outlined">
                                 <InputLabel htmlFor="outlined-adornment-amount">{label}</InputLabel>
                                 <OutlinedInput
@@ -142,19 +142,20 @@ export default function VerticalLinearStepper(props) {
                                     onChange={handleChange(label)}
                                     startAdornment={<InputAdornment position="start">></InputAdornment>}
                                     labelWidth={60}
-                                
+
                                 />
                             </FormControl>
 
                             <div className={classes.actionsContainer}>
                                 <div>
                                     <Button
+                                        color="primary"
                                         disabled={activeStep === 0}
                                         onClick={handleBack}
                                         className={classes.button}
                                     >
                                         Back
-                  </Button>
+                                    </Button>
                                     <Button
                                         variant="contained"
                                         color="primary"
@@ -172,15 +173,15 @@ export default function VerticalLinearStepper(props) {
             {activeStep === steps.length && (
                 <Paper square elevation={0} className={classes.resetContainer}>
                     <Typography>All steps completed - we can&apos;t wait to see you!</Typography>
-                 
+
                     <Button onClick={handleReset} className={classes.button}>
                         Reset
                      </Button>
-                     <Link to='/'>
-                     <Button  className={classes.button}>
-                        See Feeds
+                    <Link to='/'>
+                        <Button className={classes.button}>
+                            See Feeds
                      </Button>
-                     </Link>
+                    </Link>
                 </Paper>
             )}
         </div>

@@ -8,12 +8,8 @@ function schedule(props){
         <div>
         <Container maxWidth='md'>
             <ScheduleEvent addEvent={addEvent}/>
-
         </Container>
-        
         </div>
-
-
     )
 }
 
