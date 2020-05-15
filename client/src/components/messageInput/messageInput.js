@@ -3,7 +3,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -13,21 +12,18 @@ const useStyles = makeStyles((theme) => ({
 
     margin: {
         margin: theme.spacing(1),
-    },
+    }
+
+
+    
+    
 }));
 
 
 
-export default function InputAdornments() {
+export default function InputAdornments(props) {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        message: '',
-      
-    });
 
-    const handleChange = (prop) => (event) => {
-        setValues({ ...values, [prop]: event.target.value });
-    };
 
 
 return(
@@ -36,8 +32,8 @@ return(
         <InputLabel htmlFor="outlined-adornment-amount">Message</InputLabel>
         <OutlinedInput
             id="outlined-adornment-amount"
-            value={values.amount}
-            onChange={handleChange('message')}
+           
+            onChange={props.onChange}
             startAdornment={<InputAdornment position="start">></InputAdornment>}
             labelWidth={60}
         />

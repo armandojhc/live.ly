@@ -25,7 +25,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import armandopic from '../logo/armando.png';
 import everettpic from '../logo/everett.png';
 import rogerpic from'../logo/roger.png';
-
+import Button from '@material-ui/core/Button';
 import Messageinput from '../components/messageInput/messageInput';
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.shortest,
     }),
   },
+  extendedIcon: {
+    marginRight: theme.spacing(1),
+  },
   expandOpen: {
     transform: 'rotate(180deg)',
   },
@@ -71,15 +74,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
+
+const mList =[ ];
+
 export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  
+  const messageState = {
+    message: ' ',
+    
+  }
 
+  const [ values, setValues] = React.useState(messageState);
+
+  function sendMessage(){
+    mList.push(values.message);
+    console.log(mList);
+    handleExpandClick();
+  
+
+  }
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+    console.log(values.message)
+};
 
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+
 
   return (
 
@@ -107,17 +136,18 @@ export default function RecipeReviewCard() {
 
       <CardContent>
 
-        {/* <FormControl fullWidth className={classes.margin} variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-amount">Amount</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-amount"
-            value={values.amount}
-            onChange={handleChange('amount')}
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            labelWidth={60}
-          />
-        </FormControl> */}
-<Messageinput/>
+
+<div>
+<Messageinput
+
+onChange={handleChange('message')}
+/>
+
+<Button variant="outlined" size="small" color="primary" onClick={sendMessage} className={classes.margin}>
+          Send
+          
+        </Button>
+</div>
 
 
 
@@ -146,9 +176,33 @@ export default function RecipeReviewCard() {
           
           <List className={classes.root2}>
 
-      <ListItem alignItems="flex-start">
+          {mList.map((message,index)=>
+          <ListItem key = {message} alignItems="flex-start">
+          <ListItemAvatar>
+          <Avatar alt="profile-pic" src={profilepic} />
+        </ListItemAvatar>
+       
+        <ListItemText
+          primary="Manuel"
+          secondary={
+            <React.Fragment>
+              <Typography
+                component="span"
+                variant="body2"
+                className={classes.inline}
+                color="textPrimary"
+              >
+                {/* alternative (uncoment if want to use) */}
+              </Typography>
+              {message}
+            </React.Fragment>
+          }
+        />
+         </ListItem>
 
-        <ListItemAvatar>
+          )}
+      <ListItem alignItems="flex-start">
+          <ListItemAvatar>
           <Avatar alt="profile-pic" src={armandopic} />
         </ListItemAvatar>
        
