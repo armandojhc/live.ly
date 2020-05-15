@@ -11,26 +11,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-<div>
-<Button
-	onClick={WebcamCapture}
-	variant="contained"
-	color="secondary"
-	className={classes.button}
-	startIcon={<PhotoCameraIcon />}
->
-	Start Live
-</Button>
-<Button
-	onClick={startCapture}
-	variant="contained"
-	color="secondary"
-	className={classes.button}
-	startIcon={<ScreenShareIcon />}
->
-	Screen Share
-</Button>
-</div>
+
 
 
 const WebcamCapture = () => {
