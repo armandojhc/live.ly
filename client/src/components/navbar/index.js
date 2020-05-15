@@ -127,12 +127,24 @@ export default function PrimarySearchAppBar(props) {
 	const { user } = props;
 
 	const classes = useStyles();
+
+	const searchbar = {
+		artist: ''
+	};
+
+	const [users,setUser]=React.useState(searchbar);
+
 	const [ anchorEl, setAnchorEl ] = React.useState(null);
 	const [ mobileMoreAnchorEl, setMobileMoreAnchorEl ] = React.useState(null);
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+	const handleChange = (prop)=> (event)=>{
+		setUser({...users,[prop]:event.target.value});
+		console.log('searching for: ', users.artist)
+	}
+	
 	const handleProfileMenuOpen = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -234,6 +246,7 @@ export default function PrimarySearchAppBar(props) {
 						</div>
 						<InputBase
 							placeholder="Search…"
+							onChange={handleChange('artist')}
 							classes={{
 								root  : classes.inputRoot,
 								input : classes.inputInput
