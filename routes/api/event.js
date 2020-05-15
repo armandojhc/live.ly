@@ -22,17 +22,17 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res, next) => {
 
-    console.log(req.body);
-    let token = req.headers.authorization.split(" ")[1];
+    // console.log(req.body);
+    // let token = req.headers.authorization.split(" ")[1];
 
-    jwt.verify(token, secret, (err, decoded) => {
+    // jwt.verify(token, secret, (err, decoded) => {
         
-        if (err) {
-            return next(err);
-        }
+    //     if (err) {
+    //         return next(err);
+    //     }
         let eventData = {
             ...req.body,
-            eventOwner: decoded._id
+            eventOwner: "5ebddf0dac72bc467d6718f9" // decoded._id
         }
         
         let newEvent = new Events(eventData);
@@ -46,7 +46,7 @@ router.post("/", (req, res, next) => {
 
             res.json(savedEvent);
         });
-    })
+    // })
 
 })
 

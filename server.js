@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const routes = require("./routes");
-const eventsRouter = require("./routes/api/liveEvents.js");
+const eventsRouter = require("./routes/api/event.js");
 const usersRouter = require("./routes/api/users.js");
 const authRouter = require("./routes/api/auth.js");
 
@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-app.use("/api/events", eventsRouter);
+app.use("/api/event", eventsRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/auth", authRouter);
 app.use("/", routes);
