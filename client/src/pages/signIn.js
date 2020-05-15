@@ -3,6 +3,10 @@ import Trending from '../components/trendingEvent';
 import SignInForm from '../components/signIn/index';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
+
 
 const useStyles = makeStyles((theme) => ({
 	root      : {
@@ -12,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 		padding    : theme.spacing(2),
 		textAlign  : 'center',
 		color      : 'white',
-		background : 'transparent'
 	},
 	container : {
 		padding : 15
@@ -32,8 +35,18 @@ function SignIn(props) {
 		return (
 			<div>
 				<Container maxWidth="md" className={classes.container}>
-					{/* <Trending /> */}
-					<SignInForm authUser={authUser} />
+				<Grid container spacing={3}>
+					<Grid item xs={12}>
+						<Paper className={classes.paper}>
+							<Trending />
+						</Paper>
+					</Grid>
+					<Grid item xs={12}>
+						<Paper className={classes.paper}>
+							<SignInForm authUser={authUser} />
+						</Paper>
+					</Grid>
+				</Grid>
 				</Container>
 			</div>
 		);
