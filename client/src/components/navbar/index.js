@@ -215,10 +215,14 @@ export default function PrimarySearchAppBar() {
 				<Toolbar>
 					<div className={classes.root1}>
 						<Link to="/">
-							<Avatar alt="Lively logo" src={logo} />
+							<Avatar alt="Lively logo" className="logo-title" src={logo} />
 						</Link>
 						<Link to="/">
-							<Avatar alt="Lively title" src={LiveLyTitle} />
+							<Avatar
+								alt="Lively title"
+								className="logo-title"
+								src={LiveLyTitle}
+							/>
 						</Link>
 					</div>
 
