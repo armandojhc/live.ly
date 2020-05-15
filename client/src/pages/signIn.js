@@ -23,14 +23,17 @@ const useStyles = makeStyles((theme) => ({
 	}
 }));
 
-function SignIn() {
+function SignIn(props) {
 	const classes = useStyles();
+	const { authUser } = props;
+	console.log(authUser);
 	{
+
 		return (
 			<div>
 				<Container maxWidth="md" className={classes.container}>
-					<Trending />
-					<SignInForm />
+					{/* <Trending /> */}
+					<SignInForm authUser={authUser} />
 				</Container>
 			</div>
 		);

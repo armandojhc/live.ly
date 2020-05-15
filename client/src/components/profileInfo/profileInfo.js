@@ -159,7 +159,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function ProfileInfo() {
+function ProfileInfo(props) {
+    const { user } = props;
     const classes = useStyles();
     return (
 
@@ -171,13 +172,13 @@ function ProfileInfo() {
 
                 <Container maxWidth="sm" className={classes.profileimage}>
 
-                    <Avatar alt="Profile-image" src={profilepic} className={classes.large} />
+                    <Avatar alt="Profile-image" src={user.avatarURL} className={classes.large} />
 
                 </Container>
 
                 <Container maxWidth="sm" className={classes.profileusersettings}>
 
-                    <h1 className={classes.profileusername}>manuelr14 </h1>
+                    <h1 className={classes.profileusername}>{user.name}</h1>
 
                     <Button className={classes.btnedit} variant="contained">Edit Profile </Button>
 

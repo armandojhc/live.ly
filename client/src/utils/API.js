@@ -1,6 +1,12 @@
 import axios from 'axios';
 
+// const userAxios = axios.create()
 
+// userAxios.interceptors.request.use(config => {
+//   const token = localStorage.getItem("token")
+//   config.headers.Authorization = `Bearer ${token}`
+//   return config
+// })
 
 export default {
   // Gets all live.ly events
@@ -18,6 +24,9 @@ export default {
   // Saves a live.ly event to the database
   saveEvent: function(eventData) {
     return axios.post("/api/event", eventData);
+  },
+  authUser: function(userData) {
+    return axios.post("/api/auth/login", userData);
   },
   // Saves a user to the database
   saveUser: function(userData) {

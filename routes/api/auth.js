@@ -21,7 +21,7 @@ router.post("/signup", (req, res, next) => {
         newUser.regType = req.body.regType;
         newUser.email = req.body.email;
         newUser.password = req.body.password;
-        newUser.avatar = req.body.avatar;
+        newUser.avatarURL = req.body.avatarURL;
         newUser.name = req.body.name;
         newUser.facebook = req.body.facebook;
         newUser.instagram = req.body.instagram;
@@ -65,6 +65,7 @@ router.post("/login", (req, res, next) => {
                 return next(new Error("Username or password are incorrect"));
             }
 
+            console.log(user);
             const token = jwt.sign(user.withoutPassword(), secret);
             res.status(200).json({ token: token, user: user.withoutPassword() });
         })

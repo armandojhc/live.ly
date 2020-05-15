@@ -13,13 +13,24 @@ router.get("/", (req, res) => {
     })
 });
 
-router.get("/:userid", (req, user) => {
+router.get("/:userid", (req, res) => {
 
-    Users.find({"_id": req.params.userid}, (user, docs) => {
+    Users.find({"_id": req.params.userid}, (err, docs) => {
         if (err) {
             res.send(err);
         } else {
             res.json(user);
+        }
+    })
+})
+
+router.delete("/:userid", (req, res) => {
+
+    Users.deleteOne({"_id": req.params.userid}, (err, deletedUser) => {
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(deletedUser);
         }
     })
 })

@@ -2,12 +2,12 @@ import React from 'react';
 import ScheduleEvent from '../components/ScheduleEvent/Schedule'
 import Container from '@material-ui/core/Container';
 
-function schedule(){
-
-    return(
+function schedule(props){
+    const { addEvent } = props;
+     return(
         <div>
         <Container maxWidth='md'>
-            <ScheduleEvent/>
+            <ScheduleEvent addEvent={addEvent}/>
 
         </Container>
         
