@@ -18,10 +18,10 @@ class App extends Component {
 
 					<Switch>
 						<Route exact path={[ '/' ]}>
-							<HomePage />
-						</Route>
-						<Route exact path={[ '/signin' ]}>
 							<SignIn />
+						</Route>
+						<Route exact path={[ '/homepage' ]}>
+							<HomePage />
 						</Route>
 						<Route exact path={[ '/signup' ]}>
 							<SignUp />
