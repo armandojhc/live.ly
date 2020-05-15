@@ -6,7 +6,7 @@ import Feeds from '../components/feedsEvent/index';
 import TrendingEvents from '../components/trendingEvent/index';
 import FutureEvents from '../components/futureEvent/index';
 import Container from '@material-ui/core/Container';
-import Footer from '../components/footer';
+import Footer from '../components/side-footer';
 
 const useStyles = makeStyles((theme) => ({
 	root      : {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Feeds from '../components/feedsEvent/index';
-import Footer from '../components/footer/index';
+import Footer from '../components/bottom-footer';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Container from '@material-ui/core/Container';
@@ -54,19 +54,15 @@ const tileData = [
 
 const useStyles = makeStyles((theme) => ({
 	root                : {
-		// display: 'flex',
-		// '& > *': {
-		// 	margin: theme.spacing(1),
-		// },
-		root  : {
-			flexGrow : 1
-		},
-		paper : {
-			padding   : theme.spacing(2),
-			textAlign : 'center',
-			color     : theme.palette.text.secondary
-		}
+		flexGrow : 1,
+		padding  : theme.spacing(10)
 	},
+	paper               : {
+		padding   : theme.spacing(2),
+		textAlign : 'center',
+		color     : theme.palette.text.secondary
+	},
+
 	profileimage1       : {
 		float          : 'left',
 		width          : 'calc(33.333% - 1rem)',
@@ -201,15 +197,15 @@ function Profile() {
 		<div>
 			<ProfileInfo />
 
-			<Container maxWidth="sm">
+			<Container maxWidth="sm" className={classes.paper}>
 				<div className={classes.root2}>
 					<GridList cellHeight={180} className={classes.gridList}>
 						<GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-							<ListSubheader component="div">Lives Posted</ListSubheader>
+							<ListSubheader component="div">Happening now!</ListSubheader>
 						</GridListTile>
 						{tileData.map((tile) => (
 							<GridListTile key={tile.img}>
-								<img src={tile.img} alt={tile.title} />
+								<img src={tileData.img1} alt={tileData.title} />
 								<GridListTileBar
 									title={tile.title}
 									subtitle={<span>likes: {tile.author}</span>}
@@ -227,6 +223,7 @@ function Profile() {
 					</GridList>
 				</div>
 			</Container>
+			<Footer />
 		</div>
 	);
 }
