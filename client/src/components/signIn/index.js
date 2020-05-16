@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -9,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
 	},
 	container: {
 		padding: 50
+	},
+	button: {
+		margin: 4
 	},
 	paper: {
 		padding: theme.spacing(2),
@@ -63,7 +67,12 @@ export default function FormPropsTextFields(props) {
 					margin={"normal"}
 					Placeholder="Password"
 				/>
-				<Button onClick={authenticate} variant="contained" color="primary">Sign In</Button>
+				<Button onClick={authenticate} className={classes.button} variant="contained" color="primary">Sign In</Button>
+				<Link to="/signup">
+					<Button className={classes.button} variant="contained" color="primary">
+						Register
+					</Button>
+				</Link>
 			</form>
 		</div>
 	);

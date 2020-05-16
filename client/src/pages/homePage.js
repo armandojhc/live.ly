@@ -34,12 +34,12 @@ export default function CenteredGrid() {
 								<TrendingEvents />
 							</Paper>
 						</Grid>
-						<Grid item xs={9}>
+						<Grid item sm={9} xs={12}>
 							<Paper className={classes.paper}>
 								<Feeds />
 							</Paper>
 						</Grid>
-						<Grid item xs={3}>
+						<Grid item sm={3} xs={12}>
 							<Paper className={classes.paper}>
 								<FutureEvents />
 							</Paper>
