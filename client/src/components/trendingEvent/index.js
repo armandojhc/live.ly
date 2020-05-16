@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import './index.css';
+import Moment from 'moment';
 
 const useStyles = makeStyles((theme) => ({
 	root     : {
@@ -34,11 +35,18 @@ export default function SingleLineGridList() {
 	const classes = useStyles();
 	const [ artistData, setArtistData ] = React.useState([]);
 	const [ refreshEvents, setRefreshEvents ] = React.useState(true);
+	const [ liveEvent, setLiveEvent ] = React.useState();
+
+	// const currentDate = Moment();
+	// const eventDate = Moment(artistData.eventDate);
+	// if (currentDate.isSame(eventDate, 'day')) {
+	// 	setTrending();
+	// }
 
 	useEffect(
 		() => {
 			//Get the data from the server
-			console.log('Getting data...');
+
 			fetch('/api/event')
 				.then((res) => res.json())
 				.then((json) => {
@@ -52,6 +60,17 @@ export default function SingleLineGridList() {
 		},
 		[ refreshEvents ]
 	);
+	artistData.filter((data) => {
+		const trending = data.eventDate;
+		const currentDate = Moment();
+		const eventDate = Moment(trending);
+
+		if (currentDate.isSame(eventDate, 'day')) {
+			setLiveEvent();
+		} else console.log('no event live today');
+	});
+
+	console.log(liveEvent);
 
 	return (
 		<div className={classes.root}>
