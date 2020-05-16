@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const secret = "NOT_SECRET_SECRET";
 //www.url.com/api/auth/signup
 router.post("/signup", (req, res, next) => {
+    console.log(req.body);
     User.findOne({ email: req.body.email }, (err, user) => {
 
         if (err) {
@@ -18,7 +19,7 @@ router.post("/signup", (req, res, next) => {
         }
 
         let newUser = new User();
-        newUser.regType = req.body.regType;
+        newUser.role = req.body.role;
         newUser.email = req.body.email;
         newUser.password = req.body.password;
         newUser.avatarURL = req.body.avatarURL;

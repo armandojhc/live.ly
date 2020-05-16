@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { withRouter } from "react-router-dom";
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
@@ -42,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function getSteps() {
-    return [`name`, `platform`, `date`, `gif`,`photo`];
+    return [`name`, `eventLink`, `eventDate`, `gifURL`, `eventPhotoURL`];
 }
 
 function getStepContent(step) {
@@ -81,23 +82,25 @@ function getValidation(step){
 
 
 
-export default function VerticalLinearStepper(props) {
+function VerticalLinearStepper(props) {
     const classes = useStyles();
     const { addEvent } = props;
 
     const initialState = {
-        name: 'test',
-        platform: 'facebook',
-        date: '6/23/2020',
-        gif: 'url.gif',
-        photo: 'img.png'
+        name: '',
+        eventLink: '',
+        eventDate: '',
+        gifURL: '',
+        eventPhotoURL: ''
     };
+    //return [`name`, `eventLink`, `eventDate`, `gifURL`, `eventPhotoURL`];
 
     const [values, setValues] = React.useState(initialState);
     const [activeStep, setActiveStep] = React.useState(0);
     const steps = getSteps();
 
     const handleChange = (prop) => (event) => {
+        console.log(event);
         setValues({ ...values, [prop]: event.target.value });
     };
 
@@ -110,6 +113,7 @@ export default function VerticalLinearStepper(props) {
         // .catch(err => console.log(err));
 
         addEvent(values);
+        props.history.push("/");
     };
 
     const handleNext = () => {
@@ -138,6 +142,7 @@ export default function VerticalLinearStepper(props) {
                                 <InputLabel htmlFor="outlined-adornment-amount">{label}</InputLabel>
                                 <OutlinedInput
                                     id="outlined-adornment-amount"
+                                    value={values[label]}
                                     type={getValidation(index)}
                                     onChange={handleChange(label)}
                                     startAdornment={<InputAdornment position="start">></InputAdornment>}
@@ -186,3 +191,5 @@ export default function VerticalLinearStepper(props) {
         </div>
     );
 }
+
+export default withRouter(VerticalLinearStepper);

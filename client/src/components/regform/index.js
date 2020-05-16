@@ -23,20 +23,20 @@ const useStyles = makeStyles((theme) => ({
 function Regform(props) {
     const classes = useStyles();
     const initialState = {
-        regType: 'fan',
+        role: "0",
         name: '',
         email: '',
         password: '',
-        avatar: '',
-        facebook: '',
-        instagram: '',
-        twitter: ''
+        avatarURL: ''
     };
     const [formData, setFormData] = useState(initialState);
 
     const handleChange = (event) => {
+        console.log(event.target.name);
+        console.log(event.target.value);
         const fieldName = event.target.name;
         const value = event.target.value;
+        console.log(value, typeof value);
         setFormData(prevState => {
             let newState = { ...prevState };
             newState[fieldName] = value;
@@ -68,9 +68,9 @@ function Regform(props) {
         <form className={classes.root} noValidate autoComplete="off">
             <FormControl className={classes.root}>
                 <FormLabel component="legend">Registration Type</FormLabel>
-                <RadioGroup aria-label="type" name="regType" value={formData.regType} onChange={handleChange} >
-                    <FormControlLabel value="fan" control={<Radio />} label="Fan" />
-                    <FormControlLabel value="artist" control={<Radio />} label="Artist" />
+                <RadioGroup aria-label="type" name="role" value={formData.role} onChange={handleChange} >
+                    <FormControlLabel value={"0"} control={<Radio />} label="Fan" />
+                    <FormControlLabel value={"1"} control={<Radio />} label="Artist" />
                 </RadioGroup>
             </FormControl>
             <TextField
@@ -105,11 +105,11 @@ function Regform(props) {
                 fullWidth={true}
                 margin={"normal"}
                 id={"avatar"}
-                name={"avatar"}
+                name={"avatarURL"}
                 label={"Avatar URL"}
                 variant={"outlined"}
                 onChange={handleChange}
-                value={formData.avatar} />
+                value={formData.avatarURL} />
             <TextField
                 fullWidth={true}
                 margin={"normal"}
@@ -119,7 +119,7 @@ function Regform(props) {
                 variant={"outlined"}
                 onChange={handleChange}
                 value={formData.facebook}
-                style={formData.regType !== "artist" ? { display: "none" } : {}} />
+                style={formData.regType !== 1 ? { display: "none" } : {}} />
             <TextField
                 fullWidth={true}
                 margin={"normal"}
@@ -129,7 +129,7 @@ function Regform(props) {
                 variant={"outlined"}
                 onChange={handleChange}
                 value={formData.instagram}
-                style={formData.regType !== "artist" ? { display: "none" } : {}} />
+                style={formData.regType !== 1 ? { display: "none" } : {}} />
             <TextField
                 fullWidth={true}
                 margin={"normal"}
@@ -139,7 +139,7 @@ function Regform(props) {
                 variant={"outlined"}
                 onChange={handleChange}
                 value={formData.twitter}
-                style={formData.regType !== "artist" ? { display: "none" } : {}} />
+                style={formData.regType !== 1 ? { display: "none" } : {}} />
             <Button onClick={() => submitUser()} variant="contained" color="primary">
                 Submit
             </Button>

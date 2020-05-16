@@ -257,11 +257,11 @@ export default function PrimarySearchAppBar(props) {
 
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
-						<IconButton color="action">
+						{(user.role != 0) ? (<IconButton color="action">
 							<Link to="/schedule">
 								<EventNoteIcon color="action" className={classes.large} />
 							</Link>
-						</IconButton>
+						</IconButton>): "" }
 
 						<IconButton color="action">
 							<Link to="/golive">
@@ -281,7 +281,7 @@ export default function PrimarySearchAppBar(props) {
 								<div className={classes.root}>
 									<Avatar
 										alt="profile"
-										src={profilepic}
+										src={user.avatarURL}
 										className={classes.small}
 									/>
 								</div>

@@ -21,8 +21,9 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res, next) => {
-
-    console.log(req.body.headers);
+    //console.log("Posting new event");
+    //console.log(req.headers);
+    console.log(req.body);
     let token = req.headers.authorization.split(" ")[1];
 
     jwt.verify(token, secret, (err, decoded) => {
