@@ -51,7 +51,7 @@ function getStepContent(step) {
         case 0:
             return `Let's name this event! Give us an idea what we will see on your live`;
         case 1:
-            return `Where would you be Broadcasting from?, We don't want to miss anything`;
+            return `Share the URL to your performance! We don't want to miss anything`;
         case 2:
             return `When is this happening? We want to make sure to put it in our calendar!`;
         case 3:
