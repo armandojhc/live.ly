@@ -19,8 +19,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FormPropsTextFields(props) {
 	const classes = useStyles();
-	const [password, setPassword] = useState("test1234");
-	const [email, setEmail] = useState("rdear4@gmail.com");
+	const [password, setPassword] = useState("");
+	const [email, setEmail] = useState("");
 	const { authUser } = props;
 
 	console.log(authUser);
@@ -49,6 +49,7 @@ export default function FormPropsTextFields(props) {
 					onChange={emailChange}
 					fullWidth={true}
 					margin={"normal"}
+					placeholder="Email Address"
 				/>
 				<TextField
 					className={classes.margin}
@@ -60,6 +61,7 @@ export default function FormPropsTextFields(props) {
 					type={"password"}
 					fullWidth={true}
 					margin={"normal"}
+					Placeholder="Password"
 				/>
 				<Button onClick={authenticate} variant="contained" color="primary">Sign In</Button>
 			</form>

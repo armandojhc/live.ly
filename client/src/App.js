@@ -20,9 +20,9 @@ function App() {
 					<Navbar user={user}/>
 
 					<Switch>
-						<Route exact path={[ '/' ]}>
-							<HomePage />
-						</Route>
+						<Route exact path={[ '/' ]} render={ () => token ? <HomePage /> : <SignIn authUser={authUser}/> } />
+							
+						
 						<Route
           exact path="/signin" render={ () => token ? <Redirect to="/profile" /> : <SignIn authUser={authUser}/> } />
 						{/* <Route exact path={[ '/signin' ]}>
