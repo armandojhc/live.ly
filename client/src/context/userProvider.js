@@ -40,6 +40,14 @@ export default function UserProvider(props) {
             //Do something here
         });
     }
+
+    function saveUser(userData) {
+        axios.post("/api/auth/signup", userData)
+        .then(res => {
+            
+        });
+    }
+
     function authUser(userData) {
         axios.post("/api/auth/login", userData)
         .then(res => {
