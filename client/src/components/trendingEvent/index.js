@@ -35,13 +35,8 @@ export default function SingleLineGridList() {
 	const classes = useStyles();
 	const [ artistData, setArtistData ] = React.useState([]);
 	const [ refreshEvents, setRefreshEvents ] = React.useState(true);
-	const [ liveEvent, setLiveEvent ] = React.useState();
 
-	// const currentDate = Moment();
-	// const eventDate = Moment(artistData.eventDate);
-	// if (currentDate.isSame(eventDate, 'day')) {
-	// 	setTrending();
-	// }
+	// const [ liveEvent, setLiveEvent ] = React.useState();
 
 	useEffect(
 		() => {
@@ -60,17 +55,17 @@ export default function SingleLineGridList() {
 		},
 		[ refreshEvents ]
 	);
-	artistData.filter((data) => {
-		const trending = data.eventDate;
-		const currentDate = Moment();
-		const eventDate = Moment(trending);
+	// artistData.filter((data) => {
+	// 	const trending = data.eventDate;
+	// 	const currentDate = Moment();
+	// 	const eventDate = Moment(trending);
 
-		if (currentDate.isSame(eventDate, 'day')) {
-			setLiveEvent();
-		} else console.log('no event live today');
-	});
+	// 	if (currentDate.isSame(eventDate, 'day')) {
+	// 		setLiveEvent();
+	// 	} else console.log('no event live today');
+	// });
 
-	console.log(liveEvent);
+	// console.log(liveEvent);
 
 	return (
 		<div className={classes.root}>

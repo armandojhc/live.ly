@@ -24,11 +24,14 @@ function App() {
 			<div className="App">
 				<Navbar user={user} />
 
-<<<<<<< HEAD
 				<Switch>
-					<Route exact path={[ '/' ]}>
-						<HomePage />
-					</Route>
+					<Route
+						exact
+						path={[ '/' ]}
+						render={() =>
+							token ? <HomePage /> : <SignIn authUser={authUser} />}
+					/>
+
 					<Route
 						exact
 						path="/signin"
@@ -40,15 +43,6 @@ function App() {
 							)}
 					/>
 					{/* <Route exact path={[ '/signin' ]}>
-=======
-					<Switch>
-						<Route exact path={[ '/' ]} render={ () => token ? <HomePage /> : <SignIn authUser={authUser}/> } />
-							
-						
-						<Route
-          exact path="/signin" render={ () => token ? <Redirect to="/profile" /> : <SignIn authUser={authUser}/> } />
-						{/* <Route exact path={[ '/signin' ]}>
->>>>>>> b53b75e9a715f498a1e088cce3ece4ea14a16218
 							 </Route>*/}
 
 					<Route exact path={[ '/signup' ]}>
